@@ -307,7 +307,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         </div>
         <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
           <div class="rounded-start rounded-bottom position-relative overflow-hidden">
-            <img src="img/<?php echo $data_gambar['pict_aboutus']; ?>" class="img-fluid" style="width: 100%; height: 390px; object-fit: cover; " alt="" />
+            <img src="img/<?php echo $data_gambar['pict_aboutus']; ?>" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; " alt="" />
           </div>
         </div>
       </div>
@@ -322,11 +322,11 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         <h4 class="text-warning">Layanan Kami</h4>
         <h1 class="display-5 mb-4">Kami menyediakan layanan terbaik untuk anda</h1>
         <?php
-        $query_bidang = $koneksi->query("SELECT * FROM bidang");
+        $query_bidang = $koneksi->query("SELECT * FROM layanan");
         $bidang_data = [];
         while ($row = $query_bidang->fetch_assoc()) {
           $bidang_data[] = $row; // Simpan data bidang ke array
-          $bidang_data_nama[] = $row['nama_bidang'];
+          $bidang_data_nama[] = $row['nama_layanan'];
         }
         // Membentuk kalimat layanan dari nama bidang
         if (count($bidang_data_nama) > 1) {
@@ -335,7 +335,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
           $layanan_list = $bidang_data_nama[0] ?? '';
         } ?>
         <p class="mb-0">
-          <?php echo $profile['titlewebsite']; ?> menyediakan layanan <?php echo $layanan_list; ?> yang terkelola dengan baik untuk mendukung kebutuhan informasi dan literasi Anda.
+          <?php echo $profile['titlewebsite']; ?> menyediakan layanan "<?php echo $layanan_list; ?>" yang terkelola dengan baik untuk mendukung kebutuhan informasi dan literasi Anda.
 
         </p>
       </div>
@@ -555,7 +555,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         <div class="col-xl-12 mb-5  wow fadeInLeft">
           <div class="nav nav-pills bg-light rounded-end rounded-top p-2 d-flex justify-content-evenly">
             <?php
-            $query_bidang = $koneksi->query("SELECT * FROM bidang");
+            $query_bidang = $koneksi->query("SELECT b.*, d.nama_departemen FROM bidang b JOIN departemen d ON b.id_departemen = d.id");
             $bidang_data = [];
             while ($row = $query_bidang->fetch_assoc()) {
               $bidang_data[] = $row;
@@ -567,7 +567,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
             ?>
               <a class="accordion-link rounded-end rounded-top <?php echo $isActive; ?>" data-bs-toggle="pill" href="#collapse-<?php echo $row['id']; ?>" style="padding: 10px 20px;">
                 <h5 class="mb-0 text-light">
-                  <?php echo $row['nama_bidang']; ?>
+                  <?php echo $row['nama_departemen']; ?>
                 </h5>
               </a>
             <?php
@@ -592,7 +592,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
                 </div>
                 <div class="col-md-6">
                   <h1 class="display-5 mb-4">
-                    <?php echo $row['nama_bidang']; ?>
+                    <?php echo $row['nama_departemen']; ?>
                   </h1>
                   <p><i class="fas fa-building"></i><span>Lantai : </span><?= htmlspecialchars($row['lantai']); ?></p>
 
