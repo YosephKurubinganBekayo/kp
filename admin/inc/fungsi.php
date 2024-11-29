@@ -41,37 +41,16 @@ class databases
   //fungsi menampilkan isi data dari tbl_services
   public function get_show_services()
   {
-    $language = isset($_GET['lang']) ? $_GET['lang'] : null;
-    switch ($language) {
-      default:
-      case "in":
-        $data_services = "SELECT * FROM tbl_services WHERE lang_services='in' ORDER BY id_services DESC";
-        break;
-
-      case "en":
-        $data_services = "SELECT * FROM tbl_services WHERE lang_services='en' ORDER BY id_services DESC";
-        break;
-    }
+    $data_services = "SELECT * FROM layanan ORDER BY id ASC";
     $hasil_services = $this->mysqli->query($data_services);
     while ($row_services = mysqli_fetch_array($hasil_services)) {
       $result_services[] = $row_services;
     }
     return $result_services;
   }
-
   public function get_show_services_description()
   {
-    $language = isset($_GET['lang']) ? $_GET['lang'] : null;
-    switch ($language) {
-      default:
-      case "in":
-        $data_services = "SELECT * FROM tbl_services WHERE lang_services='in' ORDER BY id_services DESC LIMIT 1";
-        break;
-
-      case "en":
-        $data_services = "SELECT * FROM tbl_services WHERE lang_services='en' ORDER BY id_services DESC LIMIT 1";
-        break;
-    }
+    $data_services = "SELECT * FROM tbl_services ORDER BY id_services DESC LIMIT 1";
     $hasil_services = $this->mysqli->query($data_services);
     while ($row_services = mysqli_fetch_array($hasil_services)) {
       $result_services[] = $row_services;
@@ -124,16 +103,10 @@ class databases
   public function get_show_aboutus()
   {
     $language = isset($_GET['lang']) ? $_GET['lang'] : null;
-    switch ($language) {
-      default:
-      case "in":
-        $data_aboutus = "SELECT * FROM tbl_aboutus WHERE lang_aboutus='in' ORDER BY id_aboutus DESC ";
-        break;
 
-      case "en":
-        $data_aboutus = "SELECT * FROM tbl_aboutus WHERE lang_aboutus='en' ORDER BY id_aboutus DESC ";
-        break;
-    }
+    $data_aboutus = "SELECT * FROM tbl_aboutus ORDER BY id_aboutus ASC ";
+
+
     $hasil_aboutus = $this->mysqli->query($data_aboutus);
     while ($row_aboutus = mysqli_fetch_array($hasil_aboutus)) {
       $result_aboutus[] = $row_aboutus;
@@ -179,6 +152,16 @@ class databases
       $result_contactus[] = $row_contactus;
     }
     return $result_contactus;
+  }
+  //fungsi untuk menampilkan blog dan berita
+  public function get_show_blog()
+  {
+    $data_blogs = "SELECT * FROM kegiatan ORDER BY tanggal DESC";
+    $hasil_blogs = $this->mysqli->query($data_blogs);
+    while ($row_blogs = mysqli_fetch_array($hasil_blogs)) {
+      $result_blogs[] = $row_blogs;
+    }
+    return $result_blogs;
   }
   //fungsi menampilkan isi data dari tbl_gallery
   public function get_show_gallery()

@@ -3,6 +3,10 @@ include "admin/inc/fungsi.php";
 include "admin/inc/koneksi.php";
 $mysqli = new databases();
 $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
+$abouts = $mysqli->get_show_aboutus(); // Panggil fungsi untuk mendapatkan data layanan
+$services = $mysqli->get_show_services(); // Panggil fungsi untuk mendapatkan data layanan
+$blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data layanan
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,8 +104,24 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto py-0">
             <a href="index.php" class="nav-item nav-link active">Beranda</a>
-            <a href="about.html" class="nav-item nav-link ">tentang Kami</a>
+            <!-- <a href="about.html" class="nav-item nav-link ">tentang Kami</a> -->
 
+            <div class="nav-item dropdown">
+              <a href="#about" class="nav-link" data-bs-toggle="dropdown">
+                <span class="dropdown-toggle">Tentang kami</span>
+              </a>
+              <div class="dropdown-menu m-0">
+                <?php if (!empty($abouts)) {
+                  foreach ($abouts as $about) { ?>
+                    <a href="about.php?id=<?php echo urlencode($about['id_aboutus']); ?>" class="dropdown-item">
+                      <?php echo htmlspecialchars($about['title_aboutus']); ?>
+                    </a>
+                <?php }
+                } else {
+                  echo "<p>Tidak ada layanan</p>";
+                } ?>
+              </div>
+            </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link" data-bs-toggle="dropdown">
                 <span class="dropdown-toggle">Perpustakaan</span>
@@ -271,10 +291,10 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
             $data_gambar = $sql_gambar->fetch_assoc();
             ?>
             <?php
-            $sql = $koneksi->query("SELECT * FROM tbl_aboutus");
+            $sql = $koneksi->query("SELECT * FROM tbl_aboutus LIMIT 1");
             while ($data = $sql->fetch_assoc()) {
             ?>
-              <?php echo substr($data['detail_aboutus'], 0, 1000);
+              <?php echo substr($data['detail_aboutus'], 0, 850);
               ?>...
             <?php }
             ?>
@@ -320,24 +340,47 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
         </p>
       </div>
       <div class="row g-4">
-        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-          <div class="service-item">
-            <div class="service-img">
-              <img src="img/service-1.jpg" class="img-fluid rounded-top w-100" alt="Image" />
+        <?php
+        if (!empty($services)) {
+          foreach ($services as $service) {
+            $nama_layanan = $service['nama_layanan'];
+            $deskripsi = $service['deskripsi'];
+            $max_length = 130;
+
+            // Hitung total panjang karakter
+            $total_length = strlen($nama_layanan) + strlen($deskripsi);
+
+            // Potong deskripsi jika total panjang melebihi batas
+            if ($total_length > $max_length) {
+              $deskripsi = substr($deskripsi, 0, $max_length - strlen($nama_layanan)) . '...';
+            }
+        ?>
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+              <div class="service-item">
+                <div class="service-img">
+                  <img src="img/<?php echo htmlspecialchars($service['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 250px; object-fit: cover; object-position: center; width: 100%;" />
+                </div>
+                <div class="rounded-bottom p-4" style="height: 180px; overflow: hidden;">
+                  <a href="#" class="h4 text-warning d-inline-block mb-4">
+                    <?= htmlspecialchars($nama_layanan); ?>
+                  </a>
+                  <p class="mb-4">
+                    <?= htmlspecialchars($deskripsi); ?>
+                  </p>
+                </div>
+                <div class="p-4">
+                  <a class="btn btn-secondary rounded-start rounded-top py-2 px-4" href="#">Learn More</a>
+                </div>
+              </div>
             </div>
-            <div class="rounded-bottom p-4">
-              <a href="#" class="h4 d-inline-block mb-4">
-                Strategy Consulting</a>
-              <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur, sint? Excepturi facilis neque nesciunt similique
-                officiis veritatis,
-              </p>
-              <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+        <?php
+          }
+        } else {
+          echo "<p>Tidak ada layanan</p>";
+        }
+        ?>
+
+        <!-- <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
           <div class="service-item">
             <div class="service-img">
               <img src="img/service-2.jpg" class="img-fluid rounded-top w-100" alt="Image" />
@@ -416,14 +459,14 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
               <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
   <!-- Services End -->
 
   <!-- Features Start -->
-  <div class="container-fluid feature pb-5">
+  <!-- <div class="container-fluid feature pb-5">
     <div class="container pb-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">Our Features</h4>
@@ -492,7 +535,7 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- Features End -->
 
   <!-- Offer Start -->
@@ -596,7 +639,7 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
   <div class="container-fluid blog pb-5">
     <div class="container pb-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
-        <h4 class="text-warning">Our Blog & News</h4>
+        <h4 class="text-warning">Blog & Berita</h4>
         <h1 class="display-5 mb-4">Articles For Pro Traders</h1>
         <p class="mb-0">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
@@ -606,7 +649,48 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
         </p>
       </div>
       <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
-        <div class="blog-item p-4">
+        <?php if (!empty($blogs)) {
+          foreach ($blogs as $blog) {
+            $judul = $blog['judul'];
+            $deskripsi = $blog['deskripsi'];
+            $max_length = 130;
+
+            // Hitung total panjang judul dan deskripsi
+            $total_length = strlen($judul) + strlen($deskripsi);
+
+            // Potong deskripsi jika total panjang melebihi batas
+            if ($total_length > $max_length) {
+              $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
+            }
+        ?>
+            <div class="blog-item p-4">
+              <div class="blog-img mb-4">
+                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 250px; object-fit: cover; object-position: center; width: 100%;" />
+
+              </div>
+              <div class="mb-4" style="height: 180px; overflow: hidden;">
+                <a href="#" class="h4 d-inline-block mb-3">
+                  <?= htmlspecialchars($judul); ?>
+                </a>
+                <?php echo ($deskripsi); ?>
+              </div>
+              <div class="d-flex align-items-center">
+                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
+                <div class="ms-3">
+                  <h5><?php echo htmlspecialchars($blog['penulis']); ?></h5>
+                  <p class="mb-0"><?php echo htmlspecialchars($blog['tanggal']); ?></p>
+                </div>
+              </div>
+              <div class="text-end mt-4">
+                <a href="#" class="btn btn-secondary rounded-start rounded-bottom">Selengkapnya</a>
+              </div>
+            </div>
+        <?php }
+        } else {
+          echo "<p>Tidak ada layanan</p>";
+        } ?>
+
+        <!-- <div class="blog-item p-4">
           <div class="blog-img mb-4">
             <img src="img/service-1.jpg" class="img-fluid w-100 rounded" alt="" />
             <div class="blog-title">
@@ -685,14 +769,17 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
               <p class="mb-0">October 9, 2025</p>
             </div>
           </div>
-        </div>
+        </div> -->
+      </div>
+      <div class="text-end mt-4">
+        <a href="#" class="btn btn-secondary rounded-start rounded-top">Semua Berita</a>
       </div>
     </div>
   </div>
   <!-- Blog End -->
 
   <!-- FAQs Start -->
-  <div class="container-fluid faq-section pb-5">
+  <!-- <div class="container-fluid faq-section pb-5">
     <div class="container pb-5 overflow-hidden">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">FAQs</h4>
@@ -808,7 +895,7 @@ $profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- FAQs End -->
 
   <!-- Team Start -->
