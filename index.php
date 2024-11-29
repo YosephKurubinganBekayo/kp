@@ -362,10 +362,11 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
                 </div>
                 <div class="rounded-bottom p-4" style="height: 180px; overflow: hidden;">
                   <a href="#" class="h4 text-warning d-inline-block mb-4">
-                    <?= htmlspecialchars($nama_layanan); ?>
+                    <?php echo  $nama_layanan ?>
+
                   </a>
                   <p class="mb-4">
-                    <?= htmlspecialchars($deskripsi); ?>
+                    <?php echo  $deskripsi ?>
                   </p>
                 </div>
                 <div class="p-4">
@@ -555,7 +556,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         <div class="col-xl-12 mb-5  wow fadeInLeft">
           <div class="nav nav-pills bg-light rounded-end rounded-top p-2 d-flex justify-content-evenly">
             <?php
-            $query_bidang = $koneksi->query("SELECT b.*, d.nama_departemen FROM bidang b JOIN departemen d ON b.id_departemen = d.id");
+            $query_bidang = $koneksi->query("SELECT b.*, d.nama_departemen FROM informasi_pelayanan b JOIN departemen d ON b.id_departemen = d.id");
             $bidang_data = [];
             while ($row = $query_bidang->fetch_assoc()) {
               $bidang_data[] = $row;
