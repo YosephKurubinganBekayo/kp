@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 11:39 AM
+-- Generation Time: Nov 30, 2024 at 06:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -30,16 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `bidang` (
   `id` int(11) NOT NULL,
   `nama_bidang` varchar(100) NOT NULL,
-  `id_departemen` int(11) NOT NULL
+  `id_departemen` int(11) NOT NULL,
+  `gambar` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bidang`
 --
 
-INSERT INTO `bidang` (`id`, `nama_bidang`, `id_departemen`) VALUES
-(1, 'pengolahan bahan pustaka', 1),
-(2, 'pengolahan arsip', 2);
+INSERT INTO `bidang` (`id`, `nama_bidang`, `id_departemen`, `gambar`) VALUES
+(1, 'pengolahan bahan pustaka', 1, 'perpus.jpg'),
+(2, 'pengolahan arsip', 2, 'perpus2.jpg'),
+(3, 'pengolahan bahan pustaka123', 1, 'service-5.jpg');
 
 -- --------------------------------------------------------
 
@@ -2145,17 +2147,19 @@ INSERT INTO `buku` (`tanggal_terima`, `id_buku`, `no_induk`, `judul_buku`, `peng
 
 CREATE TABLE `departemen` (
   `id` int(11) NOT NULL,
-  `nama_departemen` varchar(100) NOT NULL
+  `nama_departemen` varchar(100) NOT NULL,
+  `gambar` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `departemen`
 --
 
-INSERT INTO `departemen` (`id`, `nama_departemen`) VALUES
-(1, 'Perpustakaan'),
-(2, 'Kearsipan'),
-(3, 'Sekertariat');
+INSERT INTO `departemen` (`id`, `nama_departemen`, `gambar`) VALUES
+(1, 'Perpustakaan', 'perpus.jpg'),
+(2, 'Kearsipan', 'perpus2.jpg'),
+(3, 'Sekertariat', 'gedung.jpg'),
+(6, 'Perpustakaan2', 'header-1.png');
 
 -- --------------------------------------------------------
 
@@ -2179,8 +2183,9 @@ CREATE TABLE `informasi_pelayanan` (
 --
 
 INSERT INTO `informasi_pelayanan` (`id`, `id_departemen`, `gambar`, `alamat`, `lantai`, `jam_operasional`, `jam_tambahan`, `tutup`) VALUES
-(1, 1, 'perpus2.jpg', 'Jln. Cikini Raya No. 73, Jakarta Pusat', 1, 'Senin-Jumat: 09:00-17:00\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional'),
-(2, 2, 'perpus.jpg', 'Jln. Cikini Raya No. 73, Jakarta Pusat', 2, 'Senin-Jumat: 08:00-16:00\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional');
+(1, 1, 'perpus2.jpg', 'Jln. Cikini Raya No. 73, Jakarta Pusat', 1, 'Senin-Jumat: 09:00-17:00\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional'),
+(2, 2, 'perpus.jpg', 'Jln. Cikini Raya No. 73, Jakarta Pusat', 2, 'Senin-Jumat: 08:00-16:00\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional'),
+(3, 3, 'service-2.jpg', 'Rt.007 Rw.004, Desa Muruona kecamatan Ile Ape.', 3, 'Senin-Kamis : 08:30-14-00\r\nJumat : 08:30-14-00', '-', 'Tutup Hari libur nasion');
 
 -- --------------------------------------------------------
 
@@ -2276,10 +2281,21 @@ INSERT INTO `layanan` (`id`, `id_departemen`, `nama_layanan`, `deskripsi`, `gamb
 
 CREATE TABLE `log_pinjam` (
   `id_log` int(11) NOT NULL,
-  `id_buku` varchar(10) NOT NULL,
+  `id_buku` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_anggota` varchar(10) NOT NULL,
   `tgl_pinjam` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `log_pinjam`
+--
+
+INSERT INTO `log_pinjam` (`id_log`, `id_buku`, `id_anggota`, `tgl_pinjam`) VALUES
+(10, '001/Dinarpusta/19', 'A001', '2024-11-30'),
+(11, '022/Dinarpusta/19', 'A001', '2024-11-30'),
+(12, '023/Dinarpusta/19', 'A001', '2024-11-30'),
+(13, '001/Dinarpusta/19', 'A002', '2024-11-30'),
+(14, '003/Dinarpusta/19', 'A002', '2024-11-30');
 
 -- --------------------------------------------------------
 
@@ -2378,7 +2394,8 @@ CREATE TABLE `tb_anggota` (
 --
 
 INSERT INTO `tb_anggota` (`id_anggota`, `nama`, `jekel`, `kelas`, `no_hp`) VALUES
-('A001', 'Kurnia Bekayo', 'Laki-laki', 'mahasiswa', '081237788789');
+('A001', 'Kurnia Bekayo1', 'Laki-laki', 'mahasiswa', '081237788789'),
+('A002', 'asis mbtl', 'Perempuan', '6', '081218594732');
 
 -- --------------------------------------------------------
 
@@ -2463,14 +2480,24 @@ INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `username`, `password
 --
 
 CREATE TABLE `tb_sirkulasi` (
-  `id_sk` varchar(20) NOT NULL,
-  `id_buku` varchar(10) NOT NULL,
+  `id_sk` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_buku` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_anggota` varchar(10) NOT NULL,
   `tgl_pinjam` date NOT NULL,
   `tgl_kembali` date NOT NULL,
   `tgl_dikembalikan` date NOT NULL,
-  `status` enum('PIN','KEM') NOT NULL
+  `status` enum('PIN','KEM') NOT NULL,
+  `id_petugas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tb_sirkulasi`
+--
+
+INSERT INTO `tb_sirkulasi` (`id_sk`, `id_buku`, `id_anggota`, `tgl_pinjam`, `tgl_kembali`, `tgl_dikembalikan`, `status`, `id_petugas`) VALUES
+('S001', '001/Dinarpusta/19', 'A001', '2024-11-30', '2024-12-07', '2024-11-30', 'PIN', 1),
+('S002', '001/Dinarpusta/19', 'A002', '2024-11-30', '2024-12-07', '2024-11-30', 'PIN', 1),
+('S002', '003/Dinarpusta/19', 'A002', '2024-11-30', '2024-12-07', '2024-11-30', 'PIN', 1);
 
 --
 -- Indexes for dumped tables
@@ -2579,9 +2606,9 @@ ALTER TABLE `tb_pengguna`
 -- Indexes for table `tb_sirkulasi`
 --
 ALTER TABLE `tb_sirkulasi`
-  ADD PRIMARY KEY (`id_sk`),
   ADD KEY `id_buku` (`id_buku`),
-  ADD KEY `id_anggota` (`id_anggota`);
+  ADD KEY `id_anggota` (`id_anggota`),
+  ADD KEY `id_petugas` (`id_petugas`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -2591,19 +2618,19 @@ ALTER TABLE `tb_sirkulasi`
 -- AUTO_INCREMENT for table `bidang`
 --
 ALTER TABLE `bidang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `departemen`
 --
 ALTER TABLE `departemen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `informasi_pelayanan`
 --
 ALTER TABLE `informasi_pelayanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jadwal_pegawai`
@@ -2627,7 +2654,7 @@ ALTER TABLE `layanan`
 -- AUTO_INCREMENT for table `log_pinjam`
 --
 ALTER TABLE `log_pinjam`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
@@ -2686,7 +2713,7 @@ ALTER TABLE `layanan`
 --
 ALTER TABLE `log_pinjam`
   ADD CONSTRAINT `log_pinjam_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `tb_anggota` (`id_anggota`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `log_pinjam_ibfk_2` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `log_pinjam_ibfk_2` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`no_induk`);
 
 --
 -- Constraints for table `tb_pegawai`
@@ -2698,8 +2725,9 @@ ALTER TABLE `tb_pegawai`
 -- Constraints for table `tb_sirkulasi`
 --
 ALTER TABLE `tb_sirkulasi`
-  ADD CONSTRAINT `tb_sirkulasi_ibfk_1` FOREIGN KEY (`id_buku`) REFERENCES `tb_buku` (`id_buku`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_sirkulasi_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `tb_anggota` (`id_anggota`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_sirkulasi_ibfk_2` FOREIGN KEY (`id_anggota`) REFERENCES `tb_anggota` (`id_anggota`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_sirkulasi_ibfk_3` FOREIGN KEY (`id_buku`) REFERENCES `buku` (`no_induk`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_sirkulasi_ibfk_4` FOREIGN KEY (`id_petugas`) REFERENCES `pegawai` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

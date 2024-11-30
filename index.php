@@ -380,87 +380,6 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
           echo "<p>Tidak ada layanan</p>";
         }
         ?>
-
-        <!-- <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-          <div class="service-item">
-            <div class="service-img">
-              <img src="img/service-2.jpg" class="img-fluid rounded-top w-100" alt="Image" />
-            </div>
-            <div class="rounded-bottom p-4">
-              <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
-              <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur, sint? Excepturi facilis neque nesciunt similique
-                officiis veritatis,
-              </p>
-              <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-          <div class="service-item">
-            <div class="service-img">
-              <img src="img/service-3.jpg" class="img-fluid rounded-top w-100" alt="Image" />
-            </div>
-            <div class="rounded-bottom p-4">
-              <a href="#" class="h4 d-inline-block mb-4">Managements</a>
-              <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur, sint? Excepturi facilis neque nesciunt similique
-                officiis veritatis,
-              </p>
-              <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-          <div class="service-item">
-            <div class="service-img">
-              <img src="img/service-4.jpg" class="img-fluid rounded-top w-100" alt="Image" />
-            </div>
-            <div class="rounded-bottom p-4">
-              <a href="#" class="h4 d-inline-block mb-4">Supply Optimization</a>
-              <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur, sint? Excepturi facilis neque nesciunt similique
-                officiis veritatis,
-              </p>
-              <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-          <div class="service-item">
-            <div class="service-img">
-              <img src="img/service-5.jpg" class="img-fluid rounded-top w-100" alt="Image" />
-            </div>
-            <div class="rounded-bottom p-4">
-              <a href="#" class="h4 d-inline-block mb-4">Hr Consulting</a>
-              <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur, sint? Excepturi facilis neque nesciunt similique
-                officiis veritatis,
-              </p>
-              <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-          <div class="service-item">
-            <div class="service-img">
-              <img src="img/service-6.jpg" class="img-fluid rounded-top w-100" alt="Image" />
-            </div>
-            <div class="rounded-bottom p-4">
-              <a href="#" class="h4 d-inline-block mb-4">Marketing Consulting</a>
-              <p class="mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur, sint? Excepturi facilis neque nesciunt similique
-                officiis veritatis,
-              </p>
-              <a class="btn btn-warning rounded-pill py-2 px-4" href="#">Learn More</a>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -556,7 +475,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         <div class="col-xl-12 mb-5  wow fadeInLeft">
           <div class="nav nav-pills bg-light rounded-end rounded-top p-2 d-flex justify-content-evenly">
             <?php
-            $query_bidang = $koneksi->query("SELECT b.*, d.nama_departemen FROM informasi_pelayanan b JOIN departemen d ON b.id_departemen = d.id");
+            $query_bidang = $koneksi->query("SELECT i.*, d.nama_departemen FROM informasi_pelayanan i JOIN departemen d ON i.id_departemen = d.id");
             $bidang_data = [];
             while ($row = $query_bidang->fetch_assoc()) {
               $bidang_data[] = $row;
