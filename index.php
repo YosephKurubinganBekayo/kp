@@ -1,49 +1,10 @@
 <?php
-include "admin/inc/fungsi.php";
-include "admin/inc/koneksi.php";
-$mysqli = new databases();
-$profile = $mysqli->get_show_profile(); // Panggil fungsi untuk mendapatkan data
-$abouts = $mysqli->get_show_aboutus(); // Panggil fungsi untuk mendapatkan data layanan
-$services = $mysqli->get_show_services(); // Panggil fungsi untuk mendapatkan data layanan
-$blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data layanan
-
+require 'call_fungtion.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <?php
-  if ($profile) { ?>
-    <title><?php echo $profile['titlewebsite'] ?></title>
-  <?php } else {
-    echo "<p>Nama website</p>";
-  }
-  ?>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="" name="keywords" />
-  <meta content="" name="description" />
-
-  <!-- Google Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
-
-  <!-- Icon Font Stylesheet -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-
-  <!-- Libraries Stylesheet -->
-  <link rel="stylesheet" href="lib/animate/animate.min.css" />
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
-  <!-- Customized Bootstrap Stylesheet -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- Template Stylesheet -->
-  <link href="css/style.css" rel="stylesheet" />
-</head>
+<?php include "head.php" ?>
 
 <body>
   <!-- Spinner Start -->
@@ -86,83 +47,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
   <!-- Topbar End -->
   <!-- Navbar & Hero Start -->
   <div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-      <div class="container">
-        <a href="" class="navbar-brand p-0">
-          <?php
-          if ($profile) { ?>
-            <h2 class="text-white">
-              <?php echo $profile['titlewebsite'] ?>
-            </h2>
-          <?php } else {
-            echo "<p>Nama website</p>";
-          } ?>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-          <span class="fa fa-bars"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav ms-auto py-0">
-            <a href="index.php" class="nav-item nav-link active">Beranda</a>
-            <!-- <a href="about.html" class="nav-item nav-link ">tentang Kami</a> -->
-
-            <div class="nav-item dropdown">
-              <a href="#about" class="nav-link" data-bs-toggle="dropdown">
-                <span class="dropdown-toggle">Tentang kami</span>
-              </a>
-              <div class="dropdown-menu m-0">
-                <?php if (!empty($abouts)) {
-                  foreach ($abouts as $about) { ?>
-                    <a href="about.php?id=<?php echo urlencode($about['id_aboutus']); ?>" class="dropdown-item">
-                      <?php echo htmlspecialchars($about['title_aboutus']); ?>
-                    </a>
-                <?php }
-                } else {
-                  echo "<p>Tidak ada layanan</p>";
-                } ?>
-              </div>
-            </div>
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                <span class="dropdown-toggle">Perpustakaan</span>
-              </a>
-              <div class="dropdown-menu m-0">
-                <a href="profil.php" class="dropdown-item">Profil</a>
-                <a href="sejarah.php" class="dropdown-item">Sejarah</a>
-                <a href="struktur.php" class="dropdown-item">Struktur Organisasi</a>
-              </div>
-            </div>
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                <span class="dropdown-toggle">Kearsipan</span>
-              </a>
-              <div class="dropdown-menu m-0">
-                <a href="profil.php" class="dropdown-item">Profil</a>
-                <a href="sejarah.php" class="dropdown-item">Sejarah</a>
-                <a href="struktur.php" class="dropdown-item">Struktur Organisasi</a>
-              </div>
-            </div>
-            <a href="service.html" class="nav-item nav-link">Layanan</a>
-            <a href="blog.html" class="nav-item nav-link">Blogs</a>
-            <!-- <div class="nav-item dropdown">
-            <a href="#" class="nav-link" data-bs-toggle="dropdown">
-              <span class="dropdown-toggle">Tentang Kami</span>
-            </a>
-            <div class="dropdown-menu m-0">
-              <a href="feature.html" class="dropdown-item">Our Features</a>
-              <a href="team.html" class="dropdown-item">Our team</a>
-              <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-              <a href="offer.html" class="dropdown-item">Our offer</a>
-              <a href="FAQ.html" class="dropdown-item">FAQs</a>
-              <a href="404.html" class="dropdown-item">404 Page</a>
-            </div>
-          </div> -->
-            <a href="contact.html" class="nav-item nav-link">Kontak</a>
-          </div>
-          <a href="#" class="btn btn-light rounded-start rounded-bottom py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
-        </div>
-      </div>
-    </nav>
+    <?php include "navbar.php" ?>
 
     <!-- Carousel Start -->
     <div class="header-carousel owl-carousel">
@@ -220,7 +105,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
                   </p>
                   <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
                     <a class="btn btn-light rounded-start rounded-top py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i>Tonton Video</a>
-                    <a class="btn btn-warning rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="#">Selengkapnya</a>
+                    <a class="btn btn-warning rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="about">Selengkapnya</a>
                   </div>
                   <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                     <h2 class="text-white me-2">Follow Us:</h2>
@@ -294,19 +179,19 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
             $sql = $koneksi->query("SELECT * FROM tbl_aboutus LIMIT 1");
             while ($data = $sql->fetch_assoc()) {
             ?>
-              <?php echo substr($data['detail_aboutus'], 0, 850);
-              ?>...
+              <?php echo strlen($data['detail_aboutus']) > 900 ? substr($data['detail_aboutus'], 0, 900) . "..." : $data['detail_aboutus']; ?>
+
             <?php }
             ?>
             <div class="row g-4">
               <div class="col-sm-6">
-                <a href="about.html" class="btn btn-secondary rounded-end rounded-top py-2 px-5 flex-shrink-0">Selengkapnya</a>
+                <a href="about.php?id=<?php echo urlencode($data_gambar['id_aboutus']); ?>" class="btn btn-secondary rounded-end rounded-top py-2 px-5 flex-shrink-0">Selengkapnya</a>
               </div>
             </div>
           </div>
         </div>
         <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
-          <div class="rounded-start rounded-bottom position-relative overflow-hidden">
+          <div class="rounded position-relative overflow-hidden">
             <img src="img/<?php echo $data_gambar['pict_aboutus']; ?>" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover; " alt="" />
           </div>
         </div>
@@ -316,8 +201,8 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
   <!-- About End -->
 
   <!-- Services Start -->
-  <div class="container-fluid service pb-5">
-    <div class="container pb-5">
+  <div class="container-fluid service py-5" id="service">
+    <div class="container py-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">Layanan Kami</h4>
         <h1 class="display-5 mb-4">Kami menyediakan layanan terbaik untuk anda</h1>
@@ -345,7 +230,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
           foreach ($services as $service) {
             $nama_layanan = $service['nama_layanan'];
             $deskripsi = $service['deskripsi'];
-            $max_length = 130;
+            $max_length = 180;
 
             // Hitung total panjang karakter
             $total_length = strlen($nama_layanan) + strlen($deskripsi);
@@ -358,19 +243,18 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
               <div class="service-item">
                 <div class="service-img">
-                  <img src="img/<?php echo htmlspecialchars($service['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 250px; object-fit: cover; object-position: center; width: 100%;" />
+                  <img src="img/<?php echo htmlspecialchars($service['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 250px; object-fit: cover; object-position: center; width: 100%; " />
                 </div>
                 <div class="rounded-bottom p-4" style="height: 180px; overflow: hidden;">
                   <a href="#" class="h4 text-warning d-inline-block mb-4">
                     <?php echo  $nama_layanan ?>
-
                   </a>
-                  <p class="mb-4">
-                    <?php echo  $deskripsi ?>
-                  </p>
+                  <!-- <p class="mb-4"> -->
+                  <?php echo  $deskripsi ?>
+                  <!-- </p> -->
                 </div>
                 <div class="p-4">
-                  <a class="btn btn-secondary rounded-start rounded-top py-2 px-4" href="#">Learn More</a>
+                  <a class="btn btn-secondary rounded-start rounded-top py-2 px-4" href="service.php#layanan-<?php echo htmlspecialchars($service['id']) ?>">Baca selengkapnya</a>
                 </div>
               </div>
             </div>
@@ -459,8 +343,8 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
   <!-- Features End -->
 
   <!-- Offer Start -->
-  <div class="container-fluid offer-section pb-5">
-    <div class="container pb-5">
+  <div class="container-fluid offer-section py-5" id="service_info">
+    <div class="container py-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">Inormasi layanan</h4>
         <h1 class="display-5 mb-4">Informasii tentang jadwal layanan Kami</h1>
@@ -508,7 +392,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
             <div id="collapse-<?php echo $row['id']; ?>" class="tab-pane fade <?php echo $isActive; ?> p-0">
               <div class="row g-4">
                 <div class="col-md-6">
-                  <img src="img/<?php echo $row['gambar'] ?>" class="img-fluid w-100 rounded-start rounded-bottom" style="width: 100%; height: 350px; object-fit: cover; " alt="" />
+                  <img src="img/<?php echo $row['gambar'] ?>" class="img-fluid w-100 rounded-start rounded-bottom" style="width: 100%; height: 400px; object-fit: cover; " alt="" />
                 </div>
                 <div class="col-md-6">
                   <h1 class="display-5 mb-4">
@@ -533,6 +417,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
                   <ul style="list-style-type: none; padding-left: 0;">
                     <li><i class="far fa-clock"> </i><?= !empty($row['jam_tambahan']) ? htmlspecialchars($row['jam_tambahan']) : '<em>Tidak ada data</em>'; ?></li>
                   </ul>
+                  <p>Tutup : <?php echo $row['tutup'] ?></p>
                   <!-- <p class="mb-4">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Corporis amet sequi molestiae tenetur eum mollitia,
@@ -540,7 +425,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
                       perspiciatis tempore et totam corrupti dignissimos aut
                       praesentium?
                     </p> -->
-                  <a class="btn btn-secondary rounded-end rounded-bottom py-2 px-4" href="#">Learn More</a>
+                  <a class="btn btn-secondary rounded-end rounded-bottom py-2 px-4" href="#">Baca Selengkapnya</a>
                 </div>
               </div>
             </div>
@@ -819,7 +704,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
   <!-- FAQs End -->
 
   <!-- Team Start -->
-  <div class="container-fluid team pb-5">
+  <!-- <div class="container-fluid team pb-5">
     <div class="container pb-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">Our Team</h4>
@@ -902,11 +787,11 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- Team End -->
 
   <!-- Testimonial Start -->
-  <div class="container-fluid testimonial pb-5">
+  <!-- <div class="container-fluid testimonial pb-5">
     <div class="container pb-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">Testimonial</h4>
@@ -1045,27 +930,266 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- Testimonial End -->
+  <!-- Contact Start -->
+  <div class="container-fluid contact py-5 " id="contact">
+    <div class="container py-5">
+      <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
+        <h4 class="text-warning">Kontak</h4>
+        <h1 class="display-5 mb-4">Our Clients Riviews</h1>
+        <p class="mb-0">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
+          adipisci facilis cupiditate recusandae aperiam temporibus corporis
+          itaque quis facere, numquam, ad culpa deserunt sint dolorem autem
+          obcaecati, ipsam mollitia hic.
+        </p>
+      </div>
+      <div class="row kontak_item">
+        <div class="col-md-6">
+          <div class="bg-light rounded p-5 mb-5 h-100 wow fadeInLeft" data-wow-delay="0.2s">
+            <h4 class="text-warning mb-4">Get in Touch</h4>
+            <div class="row g-4">
+              <!-- <div class="col-md-6"> -->
+              <div class="contact-add-item">
+                <div class="contact-icon text-warning mb-4">
+                  <i class="fas fa-map-marker-alt fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Address</h4>
+                  <p class="mb-0"> <a href="https://www.google.com/maps?q=Jl.+R.+W.+Monginsidi+No.3,+Pasir+Panjang,+Kec.+Kota+Lama,+Kota+Kupang,+Nusa+Tenggara+Tim." target="_blank">Jl. R. W. Monginsidi No.3, Pasir Panjang, Kec. Kota Lama, Kota Kupang, Nusa Tenggara Tim.
+                    </a> </p>
+                </div>
+              </div>
+              <!-- </div> -->
+              <!-- <div class="col-md-6"> -->
+              <div class="contact-add-item">
+                <div class="contact-icon text-warning mb-4">
+                  <i class="fas fa-envelope fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Mail Us</h4>
+                  <p class="mb-0">info@example.com</p>
+                </div>
+              </div>
+              <!-- </div> -->
+              <!-- <div class="col-md-6"> -->
+              <div class="contact-add-item">
+                <div class="contact-icon text-warning mb-4">
+                  <i class="fa fa-phone-alt fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Telephone</h4>
+                  <p class="mb-0">(+012) 3456 7890</p>
+                </div>
+              </div>
+              <!-- </div> -->
+              <div class="col-md-6">
+                <div class="contact-add-item">
+                  <div class="contact-icon text-warning mb-4">
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                  </div>
+                  <div>
+                    <h4>WhatsApp</h4>
+                    <a class="" href="https://wa.me/6281237788789" target="_blank">
+                      <p class="mb-0">+621237788789
+                    </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="bg-light p-5 rounded h-100 wow fadeInRight" data-wow-delay="0.2s">
+            <h4 class="text-warning">Send Your Message</h4>
+            <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a class="text-warning fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+            <form>
+              <div class="row g-4">
+                <div class="col-lg-12 col-xl-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
+                    <label for="name">Your Name</label>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-xl-6">
+                  <div class="form-floating">
+                    <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
+                    <label for="email">Your Email</label>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-xl-6">
+                  <div class="form-floating">
+                    <input type="phone" class="form-control border-0" id="phone" placeholder="Phone">
+                    <label for="phone">Your Phone</label>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-xl-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control border-0" id="project" placeholder="Project">
+                    <label for="project">Your Project</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
+                    <label for="subject">Subject</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
+                    <label for="message">Message</label>
+                  </div>
 
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-secondary w-100 py-3">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+
+      <!-- <div class="row g-5">
+        <div class="col-xl-6">
+          <div class="wow fadeInUp" data-wow-delay="0.2s">
+            <div class="bg-light rounded p-5 mb-5">
+              <h4 class="text-warning mb-4">Get in Touch</h4>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="contact-add-item">
+                    <div class="contact-icon text-warning mb-4">
+                      <i class="fas fa-map-marker-alt fa-2x"></i>
+                    </div>
+                    <div>
+                      <h4>Address</h4>
+                      <p class="mb-0"> <a href="https://www.google.com/maps?q=Jl.+R.+W.+Monginsidi+No.3,+Pasir+Panjang,+Kec.+Kota+Lama,+Kota+Kupang,+Nusa+Tenggara+Tim." target="_blank">Jl. R. W. Monginsidi No.3, Pasir Panjang, Kec. Kota Lama, Kota Kupang, Nusa Tenggara Tim.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="contact-add-item">
+                    <div class="contact-icon text-warning mb-4">
+                      <i class="fas fa-envelope fa-2x"></i>
+                    </div>
+                    <div>
+                      <h4>Mail Us</h4>
+                      <p class="mb-0">info@example.com</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="contact-add-item">
+                    <div class="contact-icon text-warning mb-4">
+                      <i class="fa fa-phone-alt fa-2x"></i>
+                    </div>
+                    <div>
+                      <h4>Telephone</h4>
+                      <p class="mb-0">(+012) 3456 7890</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="contact-add-item">
+                    <div class="contact-icon text-warning mb-4">
+                      <i class="fab fa-whatsapp fa-2x"></i>
+                    </div>
+                    <div>
+                      <h4>WhatsApp</h4>
+                      <a class="" href="https://wa.me/6281237788789" target="_blank">
+                        <p class="mb-0">+621237788789
+                      </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-light p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
+              <h4 class="text-warning">Send Your Message</h4>
+              <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a class="text-warning fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+              <form>
+                <div class="row g-4">
+                  <div class="col-lg-12 col-xl-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
+                      <label for="name">Your Name</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-xl-6">
+                    <div class="form-floating">
+                      <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
+                      <label for="email">Your Email</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-xl-6">
+                    <div class="form-floating">
+                      <input type="phone" class="form-control border-0" id="phone" placeholder="Phone">
+                      <label for="phone">Your Phone</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-xl-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control border-0" id="project" placeholder="Project">
+                      <label for="project">Your Project</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
+                      <label for="subject">Subject</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
+                      <label for="message">Message</label>
+                    </div>
+
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-secondary w-100 py-3">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+          <div class="rounded h-100">
+            <iframe class="rounded h-100 w-100" style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.342696545936!2d123.60418207479559!3d-10.152773889960576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c569de836b48afd%3A0x14faa4d8e96d8525!2sDinas%20Kearsipan%20Dan%20Perpustakaan%20Kota%20Kupang!5e0!3m2!1sid!2sid!4v1732518029038!5m2!1sid!2sid" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div> -->
+      <div class="row wow fadeInUp pt-5" data-wow-delay="0.2s ">
+        <?php echo $profile['gmap']
+        ?>
+      </div>
+    </div>
+  </div>
+  <!-- Contact End -->
   <!-- Footer Start -->
   <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-    <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08)">
+    <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
       <div class="row g-5">
         <div class="col-md-6 col-lg-6 col-xl-4">
           <div class="footer-item">
             <a href="index.html" class="p-0">
-              <h4 class="text-white">
-                <i class="fas fa-search-dollar me-3"></i>Stocker
-              </h4>
+              <h4 class="text-white"><i class="fas fa-search-dollar me-3"></i>Stocker</h4>
               <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
-            <p class="mb-4">
-              Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem
-              ipsum dolor sit amet, consectetur adipiscing...
-            </p>
+            <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
             <div class="d-flex">
-              <a href="#" class="bg-warning d-flex rounded align-items-center py-2 px-3 me-2">
+              <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
                 <i class="fas fa-apple-alt text-white"></i>
                 <div class="ms-3">
                   <small class="text-white">Download on the</small>
@@ -1073,7 +1197,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
                 </div>
               </a>
               <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
-                <i class="fas fa-play text-warning"></i>
+                <i class="fas fa-play text-primary"></i>
                 <div class="ms-3">
                   <small class="text-white">Get it on</small>
                   <h6 class="text-white">Google Play</h6>
@@ -1108,26 +1232,26 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
           <div class="footer-item">
             <h4 class="text-white mb-4">Contact Info</h4>
             <div class="d-flex align-items-center">
-              <i class="fas fa-map-marker-alt text-warning me-3"></i>
+              <i class="fas fa-map-marker-alt text-primary me-3"></i>
               <p class="text-white mb-0">123 Street New York.USA</p>
             </div>
             <div class="d-flex align-items-center">
-              <i class="fas fa-envelope text-warning me-3"></i>
+              <i class="fas fa-envelope text-primary me-3"></i>
               <p class="text-white mb-0">info@example.com</p>
             </div>
             <div class="d-flex align-items-center">
-              <i class="fa fa-phone-alt text-warning me-3"></i>
+              <i class="fa fa-phone-alt text-primary me-3"></i>
               <p class="text-white mb-0">(+012) 3456 7890</p>
             </div>
             <div class="d-flex align-items-center mb-4">
-              <i class="fab fa-firefox-browser text-warning me-3"></i>
+              <i class="fab fa-firefox-browser text-primary me-3"></i>
               <p class="text-white mb-0">Yoursite@ex.com</p>
             </div>
             <div class="d-flex">
-              <a class="btn btn-warning btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f text-white"></i></a>
-              <a class="btn btn-warning btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-twitter text-white"></i></a>
-              <a class="btn btn-warning btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-instagram text-white"></i></a>
-              <a class="btn btn-warning btn-sm-square rounded-circle me-0" href="#"><i class="fab fa-linkedin-in text-white"></i></a>
+              <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f text-white"></i></a>
+              <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-twitter text-white"></i></a>
+              <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-instagram text-white"></i></a>
+              <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i class="fab fa-linkedin-in text-white"></i></a>
             </div>
           </div>
         </div>
@@ -1159,7 +1283,7 @@ $blogs = $mysqli->get_show_blog(); // Panggil fungsi untuk mendapatkan data laya
   <!-- Copyright End -->
 
   <!-- Back to Top -->
-  <a href="#" class="btn btn-warning btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+  <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
   <!-- JavaScript Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

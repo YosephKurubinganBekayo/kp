@@ -391,17 +391,6 @@
 /*** Carousel Hero Header End ***/
 
 /*** Single Page Hero Header Start ***/
-.bg-breadcrumb {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/carousel-1.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 140px 0 60px 0;
-  transition: 0.5s;
-}
 
 @media (min-width: 992px) {
   .bg-breadcrumb {
