@@ -1,32 +1,33 @@
 <?php
 require 'call_fungtion.php';
 ?>
+<?php
+// Menghubungkan ke database
+
+// Memeriksa apakah parameter 'id' ada di URL
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Query untuk mengambil data blog berdasarkan ID
+    $query = "SELECT * FROM kegiatan WHERE id = '$id'";
+    $result = mysqli_query($koneksi, $query);
+
+    // Memeriksa apakah ada data blog
+    if ($result && mysqli_num_rows($result) > 0) {
+        $blog = mysqli_fetch_assoc($result);
+    } else {
+        echo "<p>Blog tidak ditemukan.</p>";
+        exit;
+    }
+} else {
+    echo "<p>ID blog tidak ditemukan.</p>";
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <?php include "head.php" ?>
-
-<?php
-// Ambil data filter jika ada
-$tahun_filter = isset($_GET['tahun']) ? $_GET['tahun'] : '';
-$bulan_filter = isset($_GET['bulan']) ? $_GET['bulan'] : '';
-$departemen_filter = isset($_GET['departemen']) ? $_GET['departemen'] : '';
-
-// Filter data dari database berdasarkan filter yang diterima
-$query = "SELECT * FROM kegiatan WHERE 1=1";
-
-if (!empty($tahun_filter)) {
-    $query .= " AND YEAR(tanggal) = '$tahun_filter'";
-}
-if (!empty($bulan_filter)) {
-    $query .= " AND MONTH(tanggal) = '$bulan_filter'";
-}
-if (!empty($departemen_filter)) {
-    $query .= " AND departemen = '$departemen_filter'";
-}
-$result = mysqli_query($koneksi, $query);
-$blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
-?>
 
 <body>
 
@@ -42,7 +43,7 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 position: relative;
                 overflow: hidden;
                 background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                    url(img/service-1.jpg);
+                    url(img/<?php echo htmlspecialchars($blog['gambar']); ?>);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -57,82 +58,45 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item active text-primary">Blog & Artikel</li>
+                    <li class="breadcrumb-item active text-primary">Detail Blog</li>
                 </ol>
             </div>
         </div>
         <!-- Header End -->
     </div>
     <!-- Navbar & Hero End -->
+
     <!-- Services Start -->
 
     <div class="container-fluid blog py-5">
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
-                <h4 class="text-warning">Blog & Berita</h4>
-                <h1 class="display-5 mb-4">Articles For Pro Traders</h1>
-                <p class="mb-0">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-                    adipisci facilis cupiditate recusandae aperiam temporibus corporis
-                    itaque quis facere, numquam, ad culpa deserunt sint dolorem autem
-                    obcaecati, ipsam mollitia hic.
-                </p>
+                <h1 class="display-5 mb-4">Detail Blog dan Berita</h1>
             </div>
-            
-            <div class="text-end mb-4">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filterModal">Filter Data</button>
-            </div>
-            <div class="row g-4 wow fadeInUp" data-wow-delay="0.2s">
-                <?php if (!empty($blogs)) {
-                    foreach ($blogs as $blog) {
-                        $judul = $blog['judul'];
-                        $deskripsi = $blog['deskripsi'];
-                        $max_length = 130;
 
-                        // Hitung total panjang judul dan deskripsi
-                        $total_length = strlen($judul) + strlen($deskripsi);
-
-                        // Potong deskripsi jika total panjang melebihi batas
-                        if ($total_length > $max_length) {
-                            $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
-                        }
-                ?>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card h-100">
-                                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>"
-                                    class="card-img-top"
-                                    alt="<?php echo htmlspecialchars($blog['judul']); ?>"
-                                    style="height: 250px; object-fit: cover; object-position: center;" />
-
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <?= htmlspecialchars($judul); ?>
-                                    </h5>
-                                    <p class="card-text">
-                                        <?php echo htmlspecialchars($deskripsi); ?>
-                                    </p>
-                                </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/testimonial-1.jpg"
-                                            class="rounded-circle me-2"
-                                            style="width: 40px; height: 40px;"
-                                            alt="" />
-                                        <div>
-                                            <h6 class="mb-0"><?php echo htmlspecialchars($blog['penulis']); ?></h6>
-                                            <small class="text-muted"><?php echo htmlspecialchars($blog['tanggal']); ?></small>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="btn btn-secondary btn-sm">Selengkapnya</a>
-                                </div>
-                            </div>
+            <div class="container py-5">
+                <div class="row">
+                    <h4 class="display-5 "><?php echo htmlspecialchars($blog['judul']); ?></h4>
+                    <p class="text-muted"><?php echo htmlspecialchars($blog['tanggal']); ?> | <?php echo htmlspecialchars($blog['penulis']); ?></p>
+                    <div class="col-md-9">
+                        <div class="blog-content">
+                            <p><?php echo nl2br(($blog['deskripsi'])); ?></p>
                         </div>
-                <?php }
-                } else {
-                    echo "<p class='text-center'>Tidak ada layanan</p>";
-                } ?>
-            </div>
+                        <div class="text-end mt-4">
+                            <a href="articel_blog.php" class="btn btn-secondary rounded-start rounded-top">Kembali ke Blog</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="blog-img mb-4">
+                            <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded w-100" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
+                            <img src="img/<?php echo htmlspecialchars($profile['gambar']); ?>" class="img-fluid rounded w-100" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
+                            </div>
+                    </div>
 
+                </div>
+            </div>
         </div>
+    </div>
     </div>
 
     <!-- Footer Start -->
@@ -283,7 +247,7 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 ?>
                             </select>
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-warning">Terapkan Filter</button>

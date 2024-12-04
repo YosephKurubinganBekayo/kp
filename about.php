@@ -108,7 +108,7 @@ if ($id > 0) {
         <!-- Header End -->
     </div>
 
-    <!-- Abvout Start -->
+    <!-- Abaout Start -->
     <div id="about" class="container-fluid about py-5 ">
         <div class="container py-5">
             <div class="row g-5 align-items-center">

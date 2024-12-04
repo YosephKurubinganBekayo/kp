@@ -459,10 +459,8 @@ require 'call_fungtion.php'
             $judul = $blog['judul'];
             $deskripsi = $blog['deskripsi'];
             $max_length = 130;
-
             // Hitung total panjang judul dan deskripsi
             $total_length = strlen($judul) + strlen($deskripsi);
-
             // Potong deskripsi jika total panjang melebihi batas
             if ($total_length > $max_length) {
               $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
@@ -487,97 +485,16 @@ require 'call_fungtion.php'
                 </div>
               </div>
               <div class="text-end mt-4">
-                <a href="#" class="btn btn-secondary rounded-start rounded-bottom">Selengkapnya</a>
+                <a href="articel_blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-secondary rounded-start rounded-bottom">Selengkapnya</a>
               </div>
             </div>
         <?php }
         } else {
-          echo "<p>Tidak ada layanan</p>";
+          echo "<p>Tidak ada Blog dan berita</p>";
         } ?>
-
-        <!-- <div class="blog-item p-4">
-          <div class="blog-img mb-4">
-            <img src="img/service-1.jpg" class="img-fluid w-100 rounded" alt="" />
-            <div class="blog-title">
-              <a href="#" class="btn">Dividend Stocks</a>
-            </div>
-          </div>
-          <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-          <p class="mb-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
-            aut aliquam suscipit error corporis accusamus labore....
-          </p>
-          <div class="d-flex align-items-center">
-            <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
-            <div class="ms-3">
-              <h5>Admin</h5>
-              <p class="mb-0">October 9, 2025</p>
-            </div>
-          </div>
-        </div>
-        <div class="blog-item p-4">
-          <div class="blog-img mb-4">
-            <img src="img/service-2.jpg" class="img-fluid w-100 rounded" alt="" />
-            <div class="blog-title">
-              <a href="#" class="btn">Non-Dividend Stocks</a>
-            </div>
-          </div>
-          <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-          <p class="mb-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
-            aut aliquam suscipit error corporis accusamus labore....
-          </p>
-          <div class="d-flex align-items-center">
-            <img src="img/testimonial-2.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
-            <div class="ms-3">
-              <h5>Admin</h5>
-              <p class="mb-0">October 9, 2025</p>
-            </div>
-          </div>
-        </div>
-        <div class="blog-item p-4">
-          <div class="blog-img mb-4">
-            <img src="img/service-3.jpg" class="img-fluid w-100 rounded" alt="" />
-            <div class="blog-title">
-              <a href="#" class="btn">Dividend Stocks</a>
-            </div>
-          </div>
-          <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-          <p class="mb-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
-            aut aliquam suscipit error corporis accusamus labore....
-          </p>
-          <div class="d-flex align-items-center">
-            <img src="img/testimonial-3.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
-            <div class="ms-3">
-              <h5>Admin</h5>
-              <p class="mb-0">October 9, 2025</p>
-            </div>
-          </div>
-        </div>
-        <div class="blog-item p-4">
-          <div class="blog-img mb-4">
-            <img src="img/service-4.jpg" class="img-fluid w-100 rounded" alt="" />
-            <div class="blog-title">
-              <a href="#" class="btn">Non-Dividend Stocks</a>
-            </div>
-          </div>
-          <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-          <p class="mb-4">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
-            aut aliquam suscipit error corporis accusamus labore....
-          </p>
-          <div class="d-flex align-items-center">
-            <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
-            <div class="ms-3">
-              <h5>Admin</h5>
-              <p class="mb-0">October 9, 2025</p>
-            </div>
-          </div>
-        </div> -->
       </div>
       <div class="text-end mt-4">
-        <a href="#" class="btn btn-secondary rounded-start rounded-top">Semua Berita</a>
+        <a href="articel_blog.php" class="btn btn-secondary rounded-start rounded-top">Semua Berita</a>
       </div>
     </div>
   </div>
