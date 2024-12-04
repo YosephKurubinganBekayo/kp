@@ -28,8 +28,8 @@ require 'call_fungtion.php'
       </div>
       <div class="col-lg-4 text-center text-lg-end">
         <div class="d-inline-flex align-items-center" style="height: 45px">
-          <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-warning me-2"></i>Register</small></a>
-          <a href="#"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-warning me-2"></i>Login</small></a>
+          <!-- <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-warning me-2"></i>Register</small></a>
+          <a href="#"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-warning me-2"></i>Login</small></a> -->
           <div class="dropdown">
             <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-warning me-2"></i>home
                 Dashboard</small></a>
@@ -854,18 +854,16 @@ require 'call_fungtion.php'
     <div class="container py-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
         <h4 class="text-warning">Kontak</h4>
-        <h1 class="display-5 mb-4">Our Clients Riviews</h1>
+        <h1 class="display-5 mb-4">HUBUNGI KAMI</h1>
         <p class="mb-0">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-          adipisci facilis cupiditate recusandae aperiam temporibus corporis
-          itaque quis facere, numquam, ad culpa deserunt sint dolorem autem
-          obcaecati, ipsam mollitia hic.
+          Jika anda membutuhkan informasi atau bantuan lebih lebih lanjut, jangan ragu untuk menghubungi kami. 
+          Kami siap membantu dengan sepenuh hati. 
         </p>
       </div>
       <div class="row kontak_item">
         <div class="col-md-6">
           <div class="bg-light rounded p-5 mb-5 h-100 wow fadeInLeft" data-wow-delay="0.2s">
-            <h4 class="text-warning mb-4">Get in Touch</h4>
+            <h4 class="text-warning mb-4">Tekan untuk menghubungi</h4>
             <div class="row g-4">
               <!-- <div class="col-md-6"> -->
               <div class="contact-add-item">
@@ -873,8 +871,8 @@ require 'call_fungtion.php'
                   <i class="fas fa-map-marker-alt fa-2x"></i>
                 </div>
                 <div>
-                  <h4>Address</h4>
-                  <p class="mb-0"> <a href="https://www.google.com/maps?q=Jl.+R.+W.+Monginsidi+No.3,+Pasir+Panjang,+Kec.+Kota+Lama,+Kota+Kupang,+Nusa+Tenggara+Tim." target="_blank">Jl. R. W. Monginsidi No.3, Pasir Panjang, Kec. Kota Lama, Kota Kupang, Nusa Tenggara Tim.
+                  <h4>Alamat</h4>
+                  <p class="mb-0"> <a class="text-dark" href="https://www.google.com/maps?q=Jl.+R.+W.+Monginsidi+No.3,+Pasir+Panjang,+Kec.+Kota+Lama,+Kota+Kupang,+Nusa+Tenggara+Tim." target="_blank">Jl. R. W. Monginsidi No.3, Pasir Panjang, Kec. Kota Lama, Kota Kupang, Nusa Tenggara Tim.
                     </a> </p>
                 </div>
               </div>
@@ -885,8 +883,10 @@ require 'call_fungtion.php'
                   <i class="fas fa-envelope fa-2x"></i>
                 </div>
                 <div>
-                  <h4>Mail Us</h4>
-                  <p class="mb-0">info@example.com</p>
+                  <h4>Email</h4>
+                  <p class="mb-0">
+                    <a class="text-dark" href="mailto:<?php echo $profile['email'] ?>"><?php echo $profile['email'] ?></a>
+                  </p>
                 </div>
               </div>
               <!-- </div> -->
@@ -896,8 +896,11 @@ require 'call_fungtion.php'
                   <i class="fa fa-phone-alt fa-2x"></i>
                 </div>
                 <div>
-                  <h4>Telephone</h4>
-                  <p class="mb-0">(+012) 3456 7890</p>
+                  <h4>Telepon</h4>
+                  <p class="mb-0">
+                    <a class="text-dark" href="mailto:<?php echo $profile['telepon'] ?>"><?php echo $profile['telepon'] ?></a>
+                  </p>
+                  <!-- <p class="mb-0"><?php echo $profile['telepon'] ?></p> -->
                 </div>
               </div>
               <!-- </div> -->
@@ -908,9 +911,10 @@ require 'call_fungtion.php'
                   </div>
                   <div>
                     <h4>WhatsApp</h4>
-                    <a class="" href="https://wa.me/6281237788789" target="_blank">
-                      <p class="mb-0">+621237788789
-                    </a>
+                    <p class="mb-0">
+                      <a class="text-dark" href="https://wa.me/<?php echo $profile['telepon'] ?>" target="_blank">
+                        <?php echo $profile['telepon'] ?>
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -920,32 +924,26 @@ require 'call_fungtion.php'
         </div>
         <div class="col-md-6">
           <div class="bg-light p-5 rounded h-100 wow fadeInRight" data-wow-delay="0.2s">
-            <h4 class="text-warning">Send Your Message</h4>
-            <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a class="text-warning fw-bold" href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+            <h4 class="text-warning">Kirim pesan ke kami</h4>
+            <p class="mb-4">Butuh Bantuan..? Silahkan Hubungi kami untuk informasi lebih lanjut</p>
             <form>
               <div class="row g-4">
-                <div class="col-lg-12 col-xl-6">
+                <div class="col-lg-12 ">
                   <div class="form-floating">
-                    <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
-                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control border-0" id="name" placeholder="Nama">
+                    <label for="name">Nama</label>
                   </div>
                 </div>
-                <div class="col-lg-12 col-xl-6">
+                <div class="col-lg-12 ">
                   <div class="form-floating">
-                    <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
-                    <label for="email">Your Email</label>
+                    <input type="email" class="form-control border-0" id="email" placeholder="Email">
+                    <label for="email">Email</label>
                   </div>
                 </div>
-                <div class="col-lg-12 col-xl-6">
+                <div class="col-lg-12 ">
                   <div class="form-floating">
-                    <input type="phone" class="form-control border-0" id="phone" placeholder="Phone">
-                    <label for="phone">Your Phone</label>
-                  </div>
-                </div>
-                <div class="col-lg-12 col-xl-6">
-                  <div class="form-floating">
-                    <input type="text" class="form-control border-0" id="project" placeholder="Project">
-                    <label for="project">Your Project</label>
+                    <input type="no_hp" class="form-control border-0" id="no_hp" placeholder="No Hp">
+                    <label for="no_hp">No Hp</label>
                   </div>
                 </div>
                 <div class="col-12">
@@ -957,12 +955,12 @@ require 'call_fungtion.php'
                 <div class="col-12">
                   <div class="form-floating">
                     <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
-                    <label for="message">Message</label>
+                    <label for="message">Pesan</label>
                   </div>
 
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-secondary w-100 py-3">Send Message</button>
+                  <button class="btn btn-secondary w-100 py-3">Kirim Pesan</button>
                 </div>
               </div>
             </form>
