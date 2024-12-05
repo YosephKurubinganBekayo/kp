@@ -36,9 +36,9 @@ $current_page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama file saat in
         </div>
         <a href="service.php" class="nav-item nav-link <?php echo ($current_page == 'service.php') ? 'active' : ''; ?>">Layanan</a>
         <a href="articel_blog.php" class="nav-item nav-link <?php echo ($current_page == 'articel_blog.php') ? 'active' : ''; ?>">Blog & Artikel</a>
-        <a href="contact.html" class="nav-item nav-link <?php echo ($current_page == 'contact.html') ? 'active' : ''; ?>">Kontak</a>
+        <a href="contact.php" class="nav-item nav-link <?php echo ($current_page == 'contact.php') ? 'active' : ''; ?>">Kontak</a>
       </div>
-      <a href="#" class="btn btn-light rounded-start rounded-bottom py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
+      <a href="admin/index.php" class="btn btn-light rounded-start rounded-bottom py-2 px-4 my-3 my-lg-0 flex-shrink-0">Masuk</a>
     </div>
   </div>
 </nav>
