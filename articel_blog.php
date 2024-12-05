@@ -22,21 +22,18 @@ if (!empty($bulan_filter)) {
     $query .= " AND MONTH(tanggal) = '$bulan_filter'";
 }
 if (!empty($departemen_filter)) {
-    $query .= " AND departemen = '$departemen_filter'";
+    $query .= " AND id_departemen = '$departemen_filter'";
 }
 $result = mysqli_query($koneksi, $query);
 $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
 <body>
-
     <?php include "topbar.php" ?>
     <!-- Topbar End -->
-
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <?php include "navbar.php" ?>
-
         <style>
             .bg-breadcrumb {
                 position: relative;
@@ -77,9 +74,9 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                     obcaecati, ipsam mollitia hic.
                 </p>
             </div>
-            
+
             <div class="text-end mb-4">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filterModal">Filter Data</button>
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#filterModal">Filter Data</button>
             </div>
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.2s">
                 <?php if (!empty($blogs)) {
@@ -98,10 +95,7 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 ?>
                         <div class="col-md-6 col-lg-4">
                             <div class="card h-100">
-                                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>"
-                                    class="card-img-top"
-                                    alt="<?php echo htmlspecialchars($blog['judul']); ?>"
-                                    style="height: 250px; object-fit: cover; object-position: center;" />
+                                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($blog['judul']); ?>" style="height: 250px; object-fit: cover; object-position: center;" />
 
                                 <div class="card-body">
                                     <h5 class="card-title">
@@ -113,22 +107,19 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <div class="d-flex align-items-center">
-                                        <img src="img/testimonial-1.jpg"
-                                            class="rounded-circle me-2"
-                                            style="width: 40px; height: 40px;"
-                                            alt="" />
+                                        <img src="img/testimonial-1.jpg" class="rounded-circle me-2" style="width: 40px; height: 40px;" alt="" />
                                         <div>
                                             <h6 class="mb-0"><?php echo htmlspecialchars($blog['penulis']); ?></h6>
                                             <small class="text-muted"><?php echo htmlspecialchars($blog['tanggal']); ?></small>
                                         </div>
                                     </div>
-                                    <a href="#" class="btn btn-secondary btn-sm">Selengkapnya</a>
+                                    <a href="articel_blog_detail.php?id=<?php echo $blog['id'] ?>" class="btn btn-secondary btn-sm">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
                 <?php }
                 } else {
-                    echo "<p class='text-center'>Tidak ada layanan</p>";
+                    echo "<p class='text-center'>Tidak ada data</p>";
                 } ?>
             </div>
 
@@ -204,7 +195,21 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                 ?>
                             </select>
                         </div>
-                        
+                        <div class="mb-3">
+                            <label for="departemen" class="form-label">Departemen</label>
+                            <select name="departemen" id="departemen" class="form-select">
+                                <option value="">Semua Departemen</option>
+                                <?php
+                                // Ambil daftar departemen dari database
+                                $departemen_query = "SELECT * FROM departemen";
+                                $departemen_result = mysqli_query($koneksi, $departemen_query);
+                                while ($row = mysqli_fetch_assoc($departemen_result)) {
+                                    $selected = ($departemen_filter == $row['id']) ? 'selected' : '';
+                                    echo "<option value='{$row['id']}' $selected>{$row['nama_departemen']}</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-warning">Terapkan Filter</button>

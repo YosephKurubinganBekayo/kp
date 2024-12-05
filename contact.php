@@ -1,6 +1,41 @@
 <?php
 require 'call_fungtion.php';
 ?>
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Ambil data dari form
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $no_hp = $_POST['no_hp'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+    $date_receive = date('Y-m-d H:i:s'); // Tanggal saat ini
+
+    // Validasi data (opsional)
+    if (empty($name) || empty($email) || empty($message)) {
+        echo "Semua field wajib diisi.";
+        exit;
+    }
+
+    // Query untuk memasukkan data ke tabel
+    $query = "INSERT INTO tbl_inbox (date_receive_inbox, name_inbox, email_inbox, subject_inbox, message_inbox)
+              VALUES ('$date_receive', '$name', '$email', '$subject', '$message')";
+
+    // Eksekusi query
+    if (mysqli_query($koneksi, $query)) {
+        echo "Pesan Anda telah berhasil dikirim.";
+        // Redirect kembali ke halaman kontak (opsional)
+        header("Location: kontak.php?status=success");
+        exit;
+    } else {
+        echo "Gagal mengirim pesan: " . mysqli_error($koneksi);
+    }
+} else {
+    echo "Metode pengiriman tidak valid.";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,43 +154,36 @@ require 'call_fungtion.php';
                     <div class="bg-light p-5 rounded h-100 wow fadeInRight" data-wow-delay="0.2s">
                         <h4 class="text-warning">Kirim pesan ke kami</h4>
                         <p class="mb-4">Butuh Bantuan..? Silahkan Hubungi kami untuk informasi lebih lanjut</p>
-                        <form>
-                            <div class="row g-4">
-                                <div class="col-lg-12 ">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="name" placeholder="Nama">
-                                        <label for="name">Nama</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 ">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control border-0" id="email" placeholder="Email">
-                                        <label for="email">Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 ">
-                                    <div class="form-floating">
-                                        <input type="no_hp" class="form-control border-0" id="no_hp" placeholder="No Hp">
-                                        <label for="no_hp">No Hp</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
-                                        <label for="message">Pesan</label>
-                                    </div>
+                        <?php if (isset($error)) : ?>
+                            <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <?php endif; ?>
 
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-secondary w-100 py-3">Kirim Pesan</button>
-                                </div>
+                        <?php if (isset($success)) : ?>
+                            <div class="alert alert-success"><?php echo $success; ?></div>
+                        <?php endif; ?>
+
+                        <form method="POST">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="name" class="form-control" placeholder="Nama">
+                                <label>Nama</label>
                             </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <label>Email</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="no_hp" class="form-control" placeholder="No Hp">
+                                <label>No Hp</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                <label>Subject</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <textarea name="message" class="form-control" placeholder="Pesan" style="height: 150px"></textarea>
+                                <label>Pesan</label>
+                            </div>
+                            <button type="submit" class="btn btn-secondary w-100 py-3">Kirim Pesan</button>
                         </form>
                     </div>
                 </div>

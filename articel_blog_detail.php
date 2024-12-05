@@ -70,26 +70,26 @@ if (isset($_GET['id'])) {
 
     <div class="container-fluid blog py-5">
         <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
-                <h1 class="display-5 mb-4">Detail Blog dan Berita</h1>
+            <div class="text-center mx-auto  wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
+                <h1 class="display-5 ">Detail Blog dan Berita</h1>
             </div>
 
             <div class="container py-5">
                 <div class="row">
-                    <h4 class="display-5 "><?php echo htmlspecialchars($blog['judul']); ?></h4>
+                    <h3 class=""><?php echo htmlspecialchars($blog['judul']); ?></h3>
                     <p class="text-muted"><?php echo htmlspecialchars($blog['tanggal']); ?> | <?php echo htmlspecialchars($blog['penulis']); ?></p>
                     <div class="col-md-9">
                         <div class="blog-content">
                             <p><?php echo nl2br(($blog['deskripsi'])); ?></p>
                         </div>
-                        <div class="text-end mt-4">
+                        <div class="text-start mt-4">
                             <a href="articel_blog.php" class="btn btn-secondary rounded-start rounded-top">Kembali ke Blog</a>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="blog-img mb-4">
                             <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded w-100" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
-                            <img src="img/<?php echo htmlspecialchars($profile['gambar']); ?>" class="img-fluid rounded w-100" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
+                            <img src="img/<?php echo htmlspecialchars($profile['gambar']); ?>" class="img-fluid rounded w-100 my-5" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
                         </div>
                     </div>
 
