@@ -59,21 +59,32 @@ include "inc/koneksi.php";
 	<!-- Site wrapper -->
 	<div class="wrapper">
 
-		<header class="main-header ">
+		<header class="main-header">
 			<style>
 				.main-header {
 					position: fixed;
+					width: 100%;
+					z-index: 1000;
+				}
+
+				.navbar {
+					margin: 0;
+					padding-right: 20px;
+
+				}
+
+				.messages-menu .dropdown-menu {
+					width: 400px;
 				}
 			</style>
 			<!-- Logo -->
 			<a href="index.php" class="logo">
 				<span class="logo-lg">
-					<!-- <img src="dist/img/logo.png" width="37px"> -->
 					<b>Arspus</b>
 				</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
-			<nav class="navbar  navbar-fixed-top">
+			<nav class="navbar navbar-fixed-top">
 				<!-- Sidebar toggle button-->
 				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
@@ -81,23 +92,62 @@ include "inc/koneksi.php";
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-						<!-- Messages: style can be found in dropdown.less-->
+						<!-- Messages: style can be found in dropdown.less -->
 						<li class="dropdown messages-menu">
-							<a class="dropdown-toggle">
-								<span>
-									<b>
-										Sistem Informasi Dinas Kearsipan dan Perpustakaan Kota kupang
-									</b>
-								</span>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="fa fa-envelope"></i>
+								<?php
+								// Query untuk menghitung jumlah pesan
+								$result_count = mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM tbl_inbox");
+								$count_data = mysqli_fetch_assoc($result_count);
+								$total_messages = $count_data['total'];
+								?>
+								<span class="label label-success"><?php echo $total_messages; ?></span> <!-- Jumlah pesan -->
 							</a>
+							<ul class="dropdown-menu">
+								<li class="header">Anda memiliki <?php echo $total_messages; ?> pesan</li>
+								<li>
+									<!-- inner menu: contains the messages -->
+									<ul class="menu" style="list-style: none; padding: 0; margin: 0;">
+										<?php
+										// Query untuk mengambil data pesan terbaru
+										$result_messages = mysqli_query($koneksi, "SELECT * FROM tbl_inbox ORDER BY date_receive_inbox DESC LIMIT 3");
+										while ($message = mysqli_fetch_assoc($result_messages)) {
+										?>
+											<li style="padding: 10px 15px; border-bottom: 1px solid #ddd;">
+												<a href="?page=MyApp/data_pesan_detail&kode=<?php echo $message['id_inbox'] ?>" style="text-decoration: none; color: #333; display: block;">
+													<!-- start message -->
+													<h4 style="margin: 0; font-size: 14px;">
+														<?php echo htmlspecialchars(substr($message['name_inbox'], 0, 20)); ?>
+													</h4>
+													<p style="margin: 5px 0 0; font-size: 12px; color: #666;">
+														<?php echo htmlspecialchars(substr($message['message_inbox'], 0, 30)); ?>...
+													</p>
+													<small style="float: left; color: #999;">
+														<i class="fa fa-calendar"></i>
+														<?php
+														// Format waktu
+														echo date("j F Y, H:i", strtotime($message['date_receive_inbox']));
+														?>
+													</small>
+												</a>
+											</li>
+										<?php } ?>
+									</ul>
+								</li>
+								<li class="footer" style="text-align: center;">
+									<a href="?page=MyApp/data_pesan" style="color: #007bff; text-decoration: none;">Lihat semua pesan</a>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>
+
 			</nav>
 		</header>
+
 
 		<!-- =============================================== -->
 
@@ -222,18 +272,6 @@ include "inc/koneksi.php";
 										</li>
 									</ul>
 								</li>
-								<!-- <li>
-									<a href="?page=MyApp/data_pegawai">
-										<i class="fa fa-"></i>Data Pegawai</a>
-								</li>
-								<li>
-									<a href="?page=MyApp/data_departemen">
-										<i class="fa fa-"></i>Data Depatemen</a>
-								</li>
-								<li>
-									<a href="?page=MyApp/data_bidang">
-										<i class="fa fa-"></i>Data Bidang</a>
-								</li> -->
 							</ul>
 						</li>
 						<li class="treeview">
@@ -469,7 +507,13 @@ include "inc/koneksi.php";
 						case 'MyApp/halaman_profile':
 							include "admin/profile/profile.php";
 							break;
-
+							// pesan
+						case 'MyApp/data_pesan':
+							include "admin/pesan/semua_pesan.php";
+							break;
+						case 'MyApp/data_pesan_detail':
+							include "admin/pesan/detail_pesan.php";
+							break;
 							//Pengguna
 						case 'MyApp/data_pengguna':
 							include "admin/pengguna/data_pengguna.php";

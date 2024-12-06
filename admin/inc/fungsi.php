@@ -48,6 +48,16 @@ class databases
     }
     return $result_services;
   }
+  //fungsi menampilkan isi data dari tbl_services
+  public function get_show_departemens()
+  {
+    $data_departemens = "SELECT * FROM departemen ORDER BY id ASC";
+    $hasil_departemens = $this->mysqli->query($data_departemens);
+    while ($row_departemens = mysqli_fetch_array($hasil_departemens)) {
+      $result_departemens[] = $row_departemens;
+    }
+    return $result_departemens;
+  }
   public function get_show_services_description()
   {
     $data_services = "SELECT * FROM tbl_services ORDER BY id_services DESC LIMIT 1";

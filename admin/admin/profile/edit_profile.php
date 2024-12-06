@@ -8,6 +8,7 @@ $id_profile = $_GET['kode'];
 $sql = $koneksi->query("SELECT * FROM tbl_profile WHERE id_profile = '$id_profile'");
 $data = $sql->fetch_assoc();
 $gambar_lama = $data['gambar']; // Simpan nama gambar lama untuk digunakan nanti
+$logo_lama = $data['logo']; // Simpan nama gambar lama untuk digunakan nanti
 
 // Proses update data ketika form disubmit
 if (isset($_POST['update'])) {

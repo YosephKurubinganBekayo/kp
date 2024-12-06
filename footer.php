@@ -2,19 +2,18 @@
 <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
     <div class="container py-5 border-start-0 border-end-0" style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
         <div class="row g-5">
-            <div class="col-md-6 col-lg-6 col-xl-4">
-                <div class="footer-item">
-                    <a href="index.html" class="p-0">
-                        <h2 class="text-white"> <img src="img/aset/noimage.png" alt="Logo" style="width:150px; height:150px;">
-                            <?php echo $profile['titlewebsite'] ?></h2>
+            <div class="col-md-6 col-lg-6 col-xl-5">
+                <div class="footer-item ">
+                    <h2 class="text-white mb-5"><?php echo $profile['titlewebsite']; ?></h2>
+                    <a href="index.html" class="p-0 d-flex align-items-center mb-2">
+                        <img src="img/aset/<?php echo htmlspecialchars($profile['logo']); ?>" alt="Logo" style="height: 150px; margin-right: 15px;">
+                        <h2 class="text-white mb-0"><?php echo $profile['titleparagraf']; ?></h2>
                     </a>
-                    <?php echo $profile['description']; ?>
-                    </p>
-
+                    <p><?php echo $profile['description']; ?></p>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-6 col-xl-6 align-items-center">
+            <div class="col-md-6 col-lg-6 col-xl-4 align-items-center">
                 <div class="footer-item">
                     <h4 class="text-white mb-4">Info Kontak</h4>
                     <div class="d-flex align-items-center mb-3">

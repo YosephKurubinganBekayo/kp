@@ -26,7 +26,7 @@ if (isset($_GET['kode'])) {
                             <label>Gambar</label>
                             <input type="file" name="gambar" class="form-control">
                             <?php if ($data['gambar']) { ?>
-                                <img src="../img/<?= $data['gambar']; ?>" alt="Gambar" width="100" height="100">
+                                <img src="../img/departemen/<?= $data['gambar']; ?>" alt="Gambar" width="100" height="100">
                             <?php } ?>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ if (isset($_POST['edit'])) {
     // Periksa jika ada gambar baru
     $gambar_baru = $_FILES['gambar']['name'];
     if ($gambar_baru) {
-        $target_dir = "../img/";
+        $target_dir = "../img/departemen/";
         $target_file = $target_dir . basename($gambar_baru);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 

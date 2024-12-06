@@ -15,9 +15,10 @@ require 'call_fungtion.php'
     <?php include "navbar.php" ?>
 
     <!-- Carousel Start -->
+     
     <div class="header-carousel owl-carousel">
       <div class="header-carousel-item">
-        <img src="img/gedung.jpg" class="img-fluid w-100" alt="Image" />
+        <img src="img/profil/<?php echo $profile['gambar'] ?>" class="img-fluid  h-100" alt="Image" />
         <div class="carousel-caption">
           <div class="container">
             <div class="row gy-0 gx-5">
@@ -51,12 +52,11 @@ require 'call_fungtion.php'
           </div>
         </div>
       </div>
-      <div class="header-carousel-item">
+      <!-- <div class="header-carousel-item">
         <img src="img/perpus.jpg" class="img-fluid w-100" alt="Image" />
         <div class="carousel-caption">
           <div class="container">
             <div class="row gy-0 gx-5">
-              <!-- <div class="col-lg-0 col-xl-5"></div> -->
               <div class="col-xl-7 animated fadeInLeft">
                 <div class="text-sm-center text-md-start">
                   <h4 class="text-warning text-uppercase fw-bold mb-4">
@@ -86,7 +86,53 @@ require 'call_fungtion.php'
             </div>
           </div>
         </div>
+      </div> -->
+      <?php
+        if (!empty($departemens)) {
+          foreach ($departemens as $departemen) {
+
+        ?>
+      <div class="header-carousel-item">
+        <img src="img/departemen/<?php echo $departemen['gambar'] ?>" class="img-fluid w-100" alt="Image" />
+        <div class="carousel-caption">
+          <div class="container">
+            <div class="row gy-0 gx-5">
+              <!-- <div class="col-lg-0 col-xl-5"></div> -->
+              <div class="col-xl-7 animated fadeInLeft">
+                <div class="text-sm-center text-md-start">
+                  <h4 class="text-warning text-uppercase fw-bold mb-4">
+                    Selamat Datang Di <?php echo $profile['titlewebsite']; ?>
+                  </h4>
+                  <h2 class="display-5 text-uppercase text-white mb-4">
+                    <?php echo $profile['titleparagraf']; ?>
+                  </h2>
+                  <p class="mb-5 fs-5">
+                    <?php echo $profile['description']; ?>
+                  </p>
+                  <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
+                    <a class="btn btn-light rounded-start rounded-top py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i>Tonton Video</a>
+                    <a class="btn btn-secondary rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="#">Selengkapnya</a>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                    <div class="d-flex justify-content-start ms-2">
+                      <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <?php
+          }
+        } else {
+          echo "<p>Tidak ada layanan</p>";
+        }
+        ?>
       <!-- <div class="header-carousel-item">
         <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image" />
         <div class="carousel-caption">

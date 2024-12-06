@@ -39,8 +39,8 @@
                   <?php echo $data['nama_departemen']; ?>
                 </td>
                 <td>
-                  <a class="fancybox" data-fancybox="gallery" href="../img/<?php echo $data['gambar']; ?>">
-                    <img src="../img/<?php echo $data['gambar']; ?>" alt="Gambar" style="width: 100px; height: auto;">
+                  <a class="fancybox" data-fancybox="gallery" href="../img/departemen/<?php echo $data['gambar']; ?>">
+                    <img src="../img/departemen/<?php echo $data['gambar']; ?>" alt="Gambar" style="width: 100px; height: auto;">
                   </a>
                 </td>
                 <td>

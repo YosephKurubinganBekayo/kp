@@ -24,6 +24,14 @@
                   </a>
                 </td>
               </tr>
+              <tr>  
+              <td>Logo</td>
+                <td>
+                  <a class="fancybox" data-fancybox="gallery" href="../img/aset/<?php echo $data['logo']; ?>">
+                    <img src="../img/aset/<?php echo $data['logo']; ?>" alt="logo" style="width: 100px; height: auto;">
+                  </a>
+                </td>
+              </tr>
               <tr>
                 <td>Nama Website</td>
                 <td><?php echo $data['titlewebsite']; ?></td>

@@ -1,17 +1,18 @@
-
 <?php
 $current_page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama file saat ini
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
   <div class="container">
-    <a href="" class="navbar-brand p-0">
+    <a href="" class="navbar-brand py-2 d-flex align-items-center">
       <?php if ($profile) { ?>
-        <h2 class="text-white"><?php echo $profile['titlewebsite']; ?></h2>
+        <img src="img/aset/<?php echo htmlspecialchars($profile['logo'])?>" alt="" class="me-2">
+        <h2 class="text-white m-0"><?php echo $profile['titlewebsite']; ?></h2>
       <?php } else { ?>
-        <p>Nama website</p>
+        <p class="m-0">Nama website</p>
       <?php } ?>
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="fa fa-bars"></span>
     </button>
