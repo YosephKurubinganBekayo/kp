@@ -325,7 +325,7 @@ require 'call_fungtion.php'
   <div class="container-fluid offer-section py-5" id="service_info">
     <div class="container py-5">
       <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
-        <h4 class="text-warning">Inormasi layanan</h4>
+        <h4 class="text-warning">Informasi layanan</h4>
         <h1 class="display-5 mb-4">Informasii tentang jadwal layanan Kami</h1>
         <p class="mb-0">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
@@ -596,7 +596,7 @@ require 'call_fungtion.php'
 
   <!-- Back to Top -->
   <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-
+  
   <!-- JavaScript Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -610,8 +610,7 @@ require 'call_fungtion.php'
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <!-- Template Javascript -->
-  <script src="js/main.js"></script>
+
   <?php
 
   ?>
@@ -634,7 +633,11 @@ require 'call_fungtion.php'
             text: 'Terima Kasih Telah Mengirim Pesan.',
             icon: 'success',
             confirmButtonText: 'OK'
-        
+          }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = 'index.php#contact';
+            }
+        });
     </script>";
       exit;
     } else {
@@ -646,7 +649,7 @@ require 'call_fungtion.php'
             confirmButtonText: 'OK'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location = 'index..php#contact';
+                window.location = 'index.php#contact';
             }
         });
     </script>";
