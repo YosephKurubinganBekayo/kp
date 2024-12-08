@@ -58,15 +58,37 @@ class databases
     }
     return $result_departemens;
   }
-  public function get_show_services_description()
+  public function get_show_services_departement($id_departemen)
   {
-    $data_services = "SELECT * FROM tbl_services ORDER BY id_services DESC LIMIT 1";
-    $hasil_services = $this->mysqli->query($data_services);
-    while ($row_services = mysqli_fetch_array($hasil_services)) {
-      $result_services[] = $row_services;
+    // Query untuk mengambil layanan berdasarkan departemen
+    $data_services = "SELECT * FROM layanan WHERE id_departemen = ? ORDER BY id ASC";
+
+    // Persiapkan statement
+    $stmt = $this->mysqli->prepare($data_services);
+
+    if ($stmt) {
+      // Bind parameter
+      $stmt->bind_param("i", $id_departemen);
+
+      // Eksekusi statement
+      $stmt->execute();
+
+      // Ambil hasilnya
+      $result = $stmt->get_result();
+      $result_services = [];
+
+      while ($row_services = $result->fetch_assoc()) {
+        $result_services[] = $row_services;
+      }
+
+      // Kembalikan hasil sebagai array
+      return $result_services;
+    } else {
+      // Jika ada kesalahan dalam query
+      return [];
     }
-    return $result_services;
   }
+
 
   public function get_show_services_detail()
   {

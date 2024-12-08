@@ -503,16 +503,15 @@ include "inc/koneksi.php";
 						case 'petugas':
 							include "home/petugas.php";
 							break;
-							// profile page
-						case 'MyApp/halaman_profile':
-							include "admin/profile/profile.php";
-							break;
 							// pesan
 						case 'MyApp/data_pesan':
 							include "admin/pesan/semua_pesan.php";
 							break;
 						case 'MyApp/data_pesan_detail':
 							include "admin/pesan/detail_pesan.php";
+							break;
+						case 'MyApp/del_pesan':
+							include "admin/pesan/del_pesan.php";
 							break;
 							//Pengguna
 						case 'MyApp/data_pengguna':
@@ -661,6 +660,9 @@ include "inc/koneksi.php";
 						case 'MyApp/edit_tentang_kami':
 							include "admin/tentang_kami/edit_tentang_kami.php";
 							break;
+						case 'MyApp/del_tentang_kami':
+							include "admin/tentang_kami/del_tentang_kami.php";
+							break;
 							// kegiatan
 						case 'MyApp/kegiatan':
 							include "admin/kegiatan/kegiatan.php";
@@ -670,6 +672,9 @@ include "inc/koneksi.php";
 							break;
 						case 'MyApp/edit_kegiatan':
 							include "admin/kegiatan/edit_kegiatan.php";
+							break;
+						case 'MyApp/del_kegiatan':
+							include "admin/kegiatan/del_kegiatan.php";
 							break;
 							// layanan
 						case 'MyApp/layanan':
@@ -681,6 +686,9 @@ include "inc/koneksi.php";
 						case 'MyApp/edit_layanan':
 							include "admin/layanan/edit_layanan.php";
 							break;
+						case 'MyApp/del_layanan':
+							include "admin/layanan/del_layanan.php";
+							break;
 							// info layanan
 						case 'MyApp/data_informasi':
 							include "admin/informsi_pelayanan/informasi.php";
@@ -690,6 +698,9 @@ include "inc/koneksi.php";
 							break;
 						case 'MyApp/edit_informasi':
 							include "admin/informsi_pelayanan/edit_informasi.php";
+							break;
+						case 'MyApp/del_informasi':
+							include "admin/informsi_pelayanan/del_informasi.php";
 							break;
 						default:
 							echo "<center><br><br><br><br><br><br><br><br><br>

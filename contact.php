@@ -11,28 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
     $date_receive = date('Y-m-d H:i:s'); // Tanggal saat ini
-
-    // Validasi data (opsional)
-    if (empty($name) || empty($email) || empty($message)) {
-        echo "Semua field wajib diisi.";
-        exit;
-    }
-
     // Query untuk memasukkan data ke tabel
     $query = "INSERT INTO tbl_inbox (date_receive_inbox, name_inbox, email_inbox, subject_inbox, message_inbox)
               VALUES ('$date_receive', '$name', '$email', '$subject', '$message')";
-
-    // Eksekusi query
-    if (mysqli_query($koneksi, $query)) {
-        echo "Pesan Anda telah berhasil dikirim.";
-        // Redirect kembali ke halaman kontak (opsional)
-        header("Location: kontak.php?status=success");
-        exit;
-    } else {
-        echo "Gagal mengirim pesan: " . mysqli_error($koneksi);
-    }
-} else {
-    echo "Metode pengiriman tidak valid.";
 }
 ?>
 
@@ -55,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             .bg-breadcrumb {
                 position: relative;
                 overflow: hidden;
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                    url(img/<?php echo $profile['gambar'] ?>);
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                    url(img/profil/<?php echo $profile['gambar'] ?>);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -164,23 +145,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <form method="POST">
                             <div class="form-floating mb-3">
-                                <input type="text" name="name" class="form-control" placeholder="Nama">
+                                <input type="text" name="name" class="form-control" placeholder="Nama " required>
                                 <label>Nama</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                                 <label>Email</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" name="no_hp" class="form-control" placeholder="No Hp">
+                                <input type="text" name="no_hp" class="form-control" placeholder="No Hp" required>
                                 <label>No Hp</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                                 <label>Subject</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea name="message" class="form-control" placeholder="Pesan" style="height: 150px"></textarea>
+                                <textarea name="message" class="form-control" placeholder="Pesan" style="height: 150px" required></textarea>
                                 <label>Pesan</label>
                             </div>
                             <button type="submit" class="btn btn-secondary w-100 py-3">Kirim Pesan</button>
@@ -202,21 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Footer End -->
 
     <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Copyright End -->
 
 
@@ -234,9 +201,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <?php
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Ambil data dari form
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $no_hp = $_POST['no_hp'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+        $date_receive = date('Y-m-d H:i:s'); // Tanggal saat ini
+
+        // Eksekusi query
+        if (mysqli_query($koneksi, $query)) {
+            echo "<script>
+        Swal.fire({
+            title: 'Kirim Pesan Berhasil',
+            text: 'Terima Kasih Telah Mengirim Pesan.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = 'contact.php';
+            }
+        });
+    </script>";
+            // Redirect kembali ke halaman kontak (opsional)
+            // header("Location: contact.php?status=success");
+            exit;
+        } else {
+            echo "<script>
+        Swal.fire({
+            title: 'Kirim Pesan Gagal ',
+            text: 'Periksa Isian Pesan Anda.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = 'contact.php';
+            }
+        });
+    </script>";
+        }
+    }
+    ?>
 </body>
 
 </html>

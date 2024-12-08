@@ -6,7 +6,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // Mendapatkan nama file saat in
   <div class="container">
     <a href="" class="navbar-brand py-2 d-flex align-items-center">
       <?php if ($profile) { ?>
-        <img src="img/aset/<?php echo htmlspecialchars($profile['logo'])?>" alt="" class="me-2">
+        <img src="img/profil/<?php echo htmlspecialchars($profile['logo'])?>" alt="" class="me-2">
         <h2 class="text-white m-0"><?php echo $profile['titlewebsite']; ?></h2>
       <?php } else { ?>
         <p class="m-0">Nama website</p>

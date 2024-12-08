@@ -15,7 +15,7 @@ require 'call_fungtion.php'
     <?php include "navbar.php" ?>
 
     <!-- Carousel Start -->
-     
+
     <div class="header-carousel owl-carousel">
       <div class="header-carousel-item">
         <img src="img/profil/<?php echo $profile['gambar'] ?>" class="img-fluid  h-100" alt="Image" />
@@ -36,89 +36,15 @@ require 'call_fungtion.php'
                   </p>
                   <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
                     <a class="btn btn-light rounded-start rounded-top py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i>Tonton Video</a>
-                    <a class="btn btn-secondary rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="#">Selengkapnya</a>
+                    <a class="btn btn-light rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="#about">Selengkapnya</a>
                   </div>
                   <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                    <div class="d-flex justify-content-start ms-2">
-                      <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="header-carousel-item">
-        <img src="img/perpus.jpg" class="img-fluid w-100" alt="Image" />
-        <div class="carousel-caption">
-          <div class="container">
-            <div class="row gy-0 gx-5">
-              <div class="col-xl-7 animated fadeInLeft">
-                <div class="text-sm-center text-md-start">
-                  <h4 class="text-warning text-uppercase fw-bold mb-4">
-                    Selamat Datang Di <?php echo $profile['titlewebsite']; ?>
-                  </h4>
-                  <h2 class="display-5 text-uppercase text-white mb-4">
-                    <?php echo $profile['titleparagraf']; ?>
-                  </h2>
-                  <p class="mb-5 fs-5">
-                    <?php echo $profile['description']; ?>
-                  </p>
-                  <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
-                    <a class="btn btn-light rounded-start rounded-top py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i>Tonton Video</a>
-                    <a class="btn btn-warning rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="about">Selengkapnya</a>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                    <h2 class="text-white me-2">Follow Us:</h2>
-                    <div class="d-flex justify-content-start ms-2">
-                      <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <?php
-        if (!empty($departemens)) {
-          foreach ($departemens as $departemen) {
 
-        ?>
-      <div class="header-carousel-item">
-        <img src="img/departemen/<?php echo $departemen['gambar'] ?>" class="img-fluid w-100" alt="Image" />
-        <div class="carousel-caption">
-          <div class="container">
-            <div class="row gy-0 gx-5">
-              <!-- <div class="col-lg-0 col-xl-5"></div> -->
-              <div class="col-xl-7 animated fadeInLeft">
-                <div class="text-sm-center text-md-start">
-                  <h4 class="text-warning text-uppercase fw-bold mb-4">
-                    Selamat Datang Di <?php echo $profile['titlewebsite']; ?>
-                  </h4>
-                  <h2 class="display-5 text-uppercase text-white mb-4">
-                    <?php echo $profile['titleparagraf']; ?>
-                  </h2>
-                  <p class="mb-5 fs-5">
-                    <?php echo $profile['description']; ?>
-                  </p>
-                  <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
-                    <a class="btn btn-light rounded-start rounded-top py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i>Tonton Video</a>
-                    <a class="btn btn-secondary rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="#">Selengkapnya</a>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                     <div class="d-flex justify-content-start ms-2">
-                      <a class="btn btn-md-square btn-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-twitter"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href=""><i class="fab fa-instagram"></i></a>
-                      <a class="btn btn-md-square btn-light rounded-circle ms-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle me-2" href="<?php echo $profile['facebook'] ?>"><i class="fab fa-facebook-f"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href="<?php echo $profile['x'] ?>"><i class="fab fa-twitter"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle mx-2" href="<?php echo $profile['instagram'] ?>"><i class="fab fa-instagram"></i></a>
+                      <a class="btn btn-md-square btn-light rounded-circle ms-2" href="<?php echo $profile['youtube'] ?>"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                   </div>
                 </div>
@@ -128,11 +54,52 @@ require 'call_fungtion.php'
         </div>
       </div>
       <?php
-          }
-        } else {
-          echo "<p>Tidak ada layanan</p>";
+      if (!empty($departemens)) {
+        foreach ($departemens as $departemen) {
+
+      ?>
+          <div class="header-carousel-item">
+            <img src="img/<?php echo $departemen['gambar'] ?>" class="img-fluid w-100" alt="Image" />
+            <div class="carousel-caption">
+              <div class="container">
+                <div class="row gy-0 gx-5">
+                  <!-- <div class="col-lg-0 col-xl-5"></div> -->
+                  <div class="col-xl-7 animated fadeInLeft">
+                    <div class="text-sm-center text-md-start">
+                      <h4 class="text-warning text-uppercase fw-bold mb-4">
+                        Selamat Datang Di <?php echo $profile['titlewebsite']; ?>
+                      </h4>
+                      <h2 class="display-5 text-uppercase text-white mb-4">
+                        <?php echo $profile['titleparagraf']; ?>
+                      </h2>
+                      <p class="mb-5 fs-5">
+                        <?php echo $profile['description']; ?>
+                      </p>
+                      <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
+                        <a class="btn btn-light rounded-start rounded-top py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i>Tonton Video</a>
+                        <a class="btn btn-light rounded-end rounded-bottom py-3 px-4 px-md-5 ms-2" href="#about">Selengkapnya</a>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+
+                        <div class="d-flex justify-content-start ms-2">
+                          <a class="btn btn-md-square btn-light rounded-circle me-2" href="<?php echo $profile['facebook'] ?>"><i class="fab fa-facebook-f"></i></a>
+                          <a class="btn btn-md-square btn-light rounded-circle mx-2" href="<?php echo $profile['x'] ?>"><i class="fab fa-twitter"></i></a>
+                          <a class="btn btn-md-square btn-light rounded-circle mx-2" href="<?php echo $profile['instagram'] ?>"><i class="fab fa-instagram"></i></a>
+                          <a class="btn btn-md-square btn-light rounded-circle ms-2" href="<?php echo $profile['youtube'] ?>"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <?php
         }
-        ?>
+      } else {
+        echo "<p>Tidak ada layanan</p>";
+      }
+      ?>
       <!-- <div class="header-carousel-item">
         <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image" />
         <div class="carousel-caption">
@@ -370,7 +337,7 @@ require 'call_fungtion.php'
         <div class="col-xl-12 mb-5  wow fadeInLeft">
           <div class="nav nav-pills bg-light rounded-end rounded-top p-2 d-flex justify-content-evenly">
             <?php
-            $query_bidang = $koneksi->query("SELECT i.*, d.nama_departemen FROM informasi_pelayanan i JOIN departemen d ON i.id_departemen = d.id");
+            $query_bidang = $koneksi->query("SELECT i.*, d.nama_departemen, d.gambar FROM informasi_pelayanan i JOIN departemen d ON i.id_departemen = d.id");
             $bidang_data = [];
             while ($row = $query_bidang->fetch_assoc()) {
               $bidang_data[] = $row;
@@ -436,7 +403,7 @@ require 'call_fungtion.php'
                       perspiciatis tempore et totam corrupti dignissimos aut
                       praesentium?
                     </p> -->
-                  <a class="btn btn-secondary rounded-end rounded-bottom py-2 px-4" href="#">Baca Selengkapnya</a>
+                  <a class="btn btn-secondary rounded-end rounded-bottom py-2 px-4" href="service.php#info_about">Baca Selengkapnya</a>
                 </div>
               </div>
             </div>
@@ -477,25 +444,26 @@ require 'call_fungtion.php'
               $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
             }
         ?>
-            <div class="blog-item p-4">
-              <div class="blog-img mb-4">
-                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 250px; object-fit: cover; object-position: center; width: 100%;" />
+            <div class="blog-item p-2">
+              <div class="blog-img ">
+                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 230px; object-fit: cover; object-position: center; width: 100%;" />
 
               </div>
-              <div class="mb-4" style="height: 180px; overflow: hidden;">
-                <a href="#" class="h4 d-inline-block mb-3">
-                  <?= htmlspecialchars($judul); ?>
-                </a>
-                <?php echo ($deskripsi); ?>
-              </div>
-              <div class="d-flex align-items-center">
-                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
-                <div class="ms-3">
-                  <h5><?php echo htmlspecialchars($blog['penulis']); ?></h5>
+              <div class="d-flex align-items-center border-bottom py-2 mb-3">
+                <img src="img/aset/noimage.png" class="img-fluid rounded-circle" style="width: 50px; height: 50px" alt="" />
+                <div class="ms-2">
+                  <p class="mb-0"><?php echo htmlspecialchars($blog['penulis']); ?></p>
                   <p class="mb-0"><?php echo htmlspecialchars($blog['tanggal']); ?></p>
                 </div>
               </div>
-              <div class="text-end mt-4">
+              <div class="mb-4" style="height: 150px; overflow: hidden;">
+                <a href="#" class="h4 d-inline-block mb-3">
+                  <?php echo ($judul); ?>
+                </a>
+                <?php echo $deskripsi ?>
+              </div>
+
+              <div class="text-end mt-2 border-top pt-2">
                 <a href="articel_blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-secondary rounded-start rounded-bottom">Selengkapnya</a>
               </div>
             </div>
@@ -517,8 +485,8 @@ require 'call_fungtion.php'
         <h4 class="text-warning">Kontak</h4>
         <h1 class="display-5 mb-4">HUBUNGI KAMI</h1>
         <p class="mb-0">
-          Jika anda membutuhkan informasi atau bantuan lebih lebih lanjut, jangan ragu untuk menghubungi kami. 
-          Kami siap membantu dengan sepenuh hati. 
+          Jika anda membutuhkan informasi atau bantuan lebih lebih lanjut, jangan ragu untuk menghubungi kami.
+          Kami siap membantu dengan sepenuh hati.
         </p>
       </div>
       <div class="row kontak_item">
@@ -640,27 +608,7 @@ require 'call_fungtion.php'
   <?php include "footer.php" ?>
   <!-- Footer End -->
 
-  <!-- Copyright Start -->
-  <div class="container-fluid copyright py-4">
-    <div class="container">
-      <div class="row g-4 align-items-center">
-        <div class="col-md-6 text-center text-md-start mb-md-0">
-          <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site
-              Name</a>, All right reserved.</span>
-        </div>
-        <div class="col-md-6 text-center text-md-end text-body">
-          <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-          <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-          <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-          Designed By
-          <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
-          Distributed By
-          <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Copyright End -->
+
 
   <!-- Back to Top -->
   <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>

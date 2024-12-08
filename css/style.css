@@ -328,7 +328,7 @@
   left: 0;
   bottom: 0;
   padding-top: 120px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
 }
@@ -365,12 +365,12 @@
 @keyframes image-zoom {
   0% {
     height: 100%;
-    opacity: 0.9;
+    opacity: 1;
   }
 
   25% {
     height: 110%;
-    opacity: 0.5;
+    opacity: 1;
   }
 
   50% {
@@ -380,12 +380,12 @@
 
   75% {
     height: 110%;
-    opacity: 0.5;
+    opacity: 1;
   }
 
   100% {
     height: 100%;
-    opacity: 0.9;
+    opacity: 1;
   }
 }
 /*** Carousel Hero Header End ***/

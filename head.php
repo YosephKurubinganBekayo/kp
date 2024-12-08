@@ -10,15 +10,22 @@
   $sql_profile = $koneksi->query("SELECT * FROM tbl_profile WHERE id_profile = 1");
   $profile = $sql_profile->fetch_assoc();
   if ($profile) { ?>
-    <title><?php echo $profile['titlewebsite'] ?></title>
+    <title><?php echo $profile['copyright'] ?></title>
   <?php } else {
     echo "<title>Nama website</title>";
   }
   ?>
+  <!-- <meta name="description" content="$showprofile[description]">
+            <meta name="keywords" content="$showprofile[keywords]">
+            <meta http-equiv="copyright" content="$showprofile[copyright]">
+            <meta name="author" content="$showprofile[author]">
+            <link rel="shortcut icon" href="img/$showprofile[icon]" />"; -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="" name="keywords" />
-  <meta content="" name="description" />
+  <meta content="<?php echo $profile['keywords'] ?>" name="keywords" />
+  <meta name="author" content="<?php echo $profile['copyright'] ?>">
 
+  <meta content="<?php echo $profile['description'] ?>" name="description" />
+  <link rel="icon" href="img/profil/<?php echo $profile['logo']?>" />
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

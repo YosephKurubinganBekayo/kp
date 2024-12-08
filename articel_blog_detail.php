@@ -42,8 +42,8 @@ if (isset($_GET['id'])) {
             .bg-breadcrumb {
                 position: relative;
                 overflow: hidden;
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                    url(img/<?php echo htmlspecialchars($blog['gambar']); ?>);
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                    url(img/profil/<?php echo $profile['gambar'] ?>);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -89,114 +89,62 @@ if (isset($_GET['id'])) {
                     <div class="col-md-3">
                         <div class="blog-img mb-4">
                             <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded w-100" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
-                            <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s" data-items="1" data-loop="true" data-nav="true" data-dots="true">
-                                <div class="item">
-                                    <img src="img/<?php echo htmlspecialchars($profile['gambar']); ?>" class="img-fluid rounded w-100 my-5" alt="<?php echo htmlspecialchars($blog['judul']); ?>" />
-                                </div>
-                            </div>
-
                         </div>
                     </div>
 
                 </div>
             </div>
+            <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
+                <?php if (!empty($blogs)) {
+                    foreach ($blogs as $blog) {
+                        $judul = $blog['judul'];
+                        $deskripsi = $blog['deskripsi'];
+                        $max_length = 130;
+                        // Hitung total panjang judul dan deskripsi
+                        $total_length = strlen($judul) + strlen($deskripsi);
+                        // Potong deskripsi jika total panjang melebihi batas
+                        if ($total_length > $max_length) {
+                            $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
+                        }
+                ?>
+                        <div class="blog-item p-4">
+                            <div class="blog-img mb-4">
+                                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 250px; object-fit: cover; object-position: center; width: 100%;" />
+
+                            </div>
+                            <div class="mb-4" style="height: 180px; overflow: hidden;">
+                                <a href="#" class="h4 d-inline-block mb-3">
+                                    <?= htmlspecialchars($judul); ?>
+                                </a>
+                                <?php echo ($deskripsi); ?>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px" alt="" />
+                                <div class="ms-3">
+                                    <h5><?php echo htmlspecialchars($blog['penulis']); ?></h5>
+                                    <p class="mb-0"><?php echo htmlspecialchars($blog['tanggal']); ?></p>
+                                </div>
+                            </div>
+                            <div class="text-end mt-4">
+                                <a href="articel_blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-secondary rounded-start rounded-bottom">Selengkapnya</a>
+                            </div>
+                        </div>
+                <?php }
+                } else {
+                    echo "<p>Tidak ada Blog dan berita</p>";
+                } ?>
+            </div>
         </div>
+
     </div>
-    <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
-        <div class="blog-item p-4">
-            <div class="blog-img mb-4">
-                <img src="img/service-1.jpg" class="img-fluid w-100 rounded" alt="">
-                <div class="blog-title">
-                    <a href="#" class="btn">Dividend Stocks</a>
-                </div>
-            </div>
-            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam suscipit error corporis accusamus labore....
-            </p>
-            <div class="d-flex align-items-center">
-                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px;" alt="">
-                <div class="ms-3">
-                    <h5>Admin</h5>
-                    <p class="mb-0">October 9, 2025</p>
-                </div>
-            </div>
-        </div>
-        <div class="blog-item p-4">
-            <div class="blog-img mb-4">
-                <img src="img/service-2.jpg" class="img-fluid w-100 rounded" alt="">
-                <div class="blog-title">
-                    <a href="#" class="btn">Non-Dividend Stocks</a>
-                </div>
-            </div>
-            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam suscipit error corporis accusamus labore....
-            </p>
-            <div class="d-flex align-items-center">
-                <img src="img/testimonial-2.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px;" alt="">
-                <div class="ms-3">
-                    <h5>Admin</h5>
-                    <p class="mb-0">October 9, 2025</p>
-                </div>
-            </div>
-        </div>
-        <div class="blog-item p-4">
-            <div class="blog-img mb-4">
-                <img src="img/service-3.jpg" class="img-fluid w-100 rounded" alt="">
-                <div class="blog-title">
-                    <a href="#" class="btn">Dividend Stocks</a>
-                </div>
-            </div>
-            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam suscipit error corporis accusamus labore....
-            </p>
-            <div class="d-flex align-items-center">
-                <img src="img/testimonial-3.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px;" alt="">
-                <div class="ms-3">
-                    <h5>Admin</h5>
-                    <p class="mb-0">October 9, 2025</p>
-                </div>
-            </div>
-        </div>
-        <div class="blog-item p-4">
-            <div class="blog-img mb-4">
-                <img src="img/service-4.jpg" class="img-fluid w-100 rounded" alt="">
-                <div class="blog-title">
-                    <a href="#" class="btn">Non-Dividend Stocks</a>
-                </div>
-            </div>
-            <a href="#" class="h4 d-inline-block mb-3">Options Trading Business?</a>
-            <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore aut aliquam suscipit error corporis accusamus labore....
-            </p>
-            <div class="d-flex align-items-center">
-                <img src="img/testimonial-1.jpg" class="img-fluid rounded-circle" style="width: 60px; height: 60px;" alt="">
-                <div class="ms-3">
-                    <h5>Admin</h5>
-                    <p class="mb-0">October 9, 2025</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Footer Start -->
     <?php include "footer.php" ?>
 
     <!-- Footer End -->
 
     <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Copyright End -->
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2024 at 11:49 PM
+-- Generation Time: Dec 08, 2024 at 08:17 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,9 +39,7 @@ CREATE TABLE `bidang` (
 --
 
 INSERT INTO `bidang` (`id`, `nama_bidang`, `id_departemen`, `gambar`) VALUES
-(1, 'pengolahan bahan pustaka', 1, 'perpus.jpg'),
-(2, 'pengolahan arsip', 2, 'perpus2.jpg'),
-(3, 'pengolahan bahan pustaka123', 1, 'service-5.jpg');
+(1, 'pengolahan bahan pustaka', 1, '1733500592_67531eb0ddedb.png');
 
 -- --------------------------------------------------------
 
@@ -2156,10 +2154,9 @@ CREATE TABLE `departemen` (
 --
 
 INSERT INTO `departemen` (`id`, `nama_departemen`, `gambar`) VALUES
-(1, 'Perpustakaan', 'perpus.jpg'),
-(2, 'Kearsipan', 'perpus2.jpg'),
-(3, 'Sekertariat', 'gedung.jpg'),
-(6, 'Perpustakaan2', 'header-1.png');
+(1, 'Perpustakaan', '1733501620_675322b480739.jpeg'),
+(2, 'Kearsipan', '1733501635_675322c3a0970.jpeg'),
+(3, 'Sekertariat', '1733501683_675322f3ee837.png');
 
 -- --------------------------------------------------------
 
@@ -2170,7 +2167,6 @@ INSERT INTO `departemen` (`id`, `nama_departemen`, `gambar`) VALUES
 CREATE TABLE `informasi_pelayanan` (
   `id` int(11) NOT NULL,
   `id_departemen` int(11) NOT NULL,
-  `gambar` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
   `lantai` int(11) NOT NULL,
   `jam_operasional` text NOT NULL,
@@ -2182,10 +2178,9 @@ CREATE TABLE `informasi_pelayanan` (
 -- Dumping data for table `informasi_pelayanan`
 --
 
-INSERT INTO `informasi_pelayanan` (`id`, `id_departemen`, `gambar`, `alamat`, `lantai`, `jam_operasional`, `jam_tambahan`, `tutup`) VALUES
-(1, 1, 'perpus2.jpg', 'Jln. Cikini Raya No. 73, Jakarta Pusat', 1, 'Senin-Jumat: 09:00-17:00\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional'),
-(2, 2, 'perpus.jpg', 'Jln. Cikini Raya No. 73, Jakarta Pusat', 2, 'Senin-Jumat: 08:00-16:00\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional'),
-(3, 3, 'service-2.jpg', 'Rt.007 Rw.004, Desa Muruona kecamatan Ile Ape.', 3, 'Senin-Kamis : 08:30-14-00\r\nJumat : 08:30-14-00', '-', 'Tutup Hari libur nasion');
+INSERT INTO `informasi_pelayanan` (`id`, `id_departemen`, `alamat`, `lantai`, `jam_operasional`, `jam_tambahan`, `tutup`) VALUES
+(1, 1, 'Jln. Cikini Raya No. 73, Jakarta Pusat', 1, 'Senin-Jumat: 09:00-17:00,\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional'),
+(2, 2, 'Jln. Cikini Raya No. 73, Jakarta Pusat', 2, 'Senin-Jumat: 08:00-16:00,\r\nSabtu-Minggu: 09:00-20:00', 'Sabtu-Minggu: 09:00-20:00', 'Hari Libur Nasional');
 
 -- --------------------------------------------------------
 
@@ -2238,15 +2233,10 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id`, `id_departemen`, `judul`, `deskripsi`, `gambar`, `penulis`, `tanggal`) VALUES
-(1, 1, 'MERICA: Membaca Buku Bermain Kriya bersama Duta Baca Warnai Hari Anak di SLB Negeri 8', '<p>Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.<br></p>', 'bookbg.jpg', 'Thian Wisnu Isnanto', '2024-11-06'),
-(2, 1, 'Pelatihan Preservasi dan Konservasi Koleksi Sastra: Mengenali Serangga', 'Jakarta—Selama hampir dua pekan, Unit Pengelola Perpustakaan Jakarta mengadakan pelatihan tentang konservasi koleksi sastra.', 'book.jpg', 'Thian Wisnu Isnanto', '2024-10-30'),
-(3, 1, 'Kegiatan Kreasi Aksi Rekreasi Dongeng Keliling (KAREDOK) di SLB Negeri 9 Jakarta', 'Jakarta, 19 September 2024 – Kegiatan KAREDOK mengajak anak-anak berinteraksi dengan dongeng kreatif.', 'bookbg.jpg', 'Thian Wisnu Isnanto', '2024-09-19'),
+(1, 1, 'MERICA: Membaca Buku Bermain Kriya bersama Duta Baca Warnai Hari Anak di SLB Negeri 7', '<p>Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.<br></p>', '1733511394_WhatsApp Image 2024-12-06 at 10.42.33.jpeg', 'Thian Wisnu Isnanto', '2024-11-06'),
+(2, 1, 'Pelatihan Preservasi dan Konservasi Koleksi Sastra: Mengenali Serangga', '<p>Jakarta—Selama hampir dua pekan, Unit Pengelola Perpustakaan Jakarta mengadakan pelatihan tentang konservasi koleksi sastra.</p>', '1733512018_WhatsApp Image 2024-12-06 at 10.42.33 (1).jpeg', 'Thian Wisnu Isnanto', '2024-10-30'),
 (4, 1, 'Peluncuran Buku Baru di Perpustakaan Jakarta', 'Perpustakaan Jakarta meluncurkan buku baru untuk masyarakat sebagai bentuk apresiasi terhadap karya lokal.', 'siswamembaca.jpg', 'Alex Rahardjo', '2024-08-15'),
-(5, 1, 'Workshop Literasi Digital untuk Generasi Muda', 'Kegiatan literasi digital diadakan untuk memberikan pengetahuan kepada generasi muda tentang pentingnya etika berinternet.', 'siswamembaca.jpg', 'Nadia Putri', '2024-07-20'),
-(6, 1, 'MERICA: Membaca Buku Bermain Kriya bersama Duta Baca Warnai Hari Anak di SLB Negeri 8', 'Jakarta, 6 November 2024 – Perpustakaan Jakarta Utara menggelar acara MERICA dengan antusiasme anak-anak SLB.', 'bookbg.jpg', 'Thian Wisnu Isnanto', '2024-11-06'),
-(7, 1, 'Pelatihan Preservasi dan Konservasi Koleksi Sastra: Mengenali Serangga', 'Jakarta—Selama hampir dua pekan, Unit Pengelola Perpustakaan Jakarta mengadakan pelatihan tentang konservasi koleksi sastra.', 'book.jpg', 'Thian Wisnu Isnanto', '2024-10-30'),
-(8, 1, 'Kegiatan Kreasi Aksi Rekreasi Dongeng Keliling (KAREDOK) di SLB Negeri 9 Jakarta', 'Jakarta, 19 September 2024 – Kegiatan KAREDOK mengajak anak-anak berinteraksi dengan dongeng kreatif.', 'bookbg.jpg', 'Thian Wisnu Isnanto', '2024-09-19'),
-(9, 1, 'Peluncuran Buku Baru di Perpustakaan Jakarta', 'Perpustakaan Jakarta meluncurkan buku baru untuk masyarakat sebagai bentuk apresiasi terhadap karya lokal.', 'promosi.jpeg', 'Alex Rahardjo', '2024-08-15'),
+(8, 1, 'Kegiatan Kreasi Aksi Rekreasi Dongeng Keliling (KAREDOK) di SLB Negeri 9 Jakarta', 'Jakarta, 19 September 2024 – Kegiatan KAREDOK mengajak anak-anak berinteraksi dengan dongeng kreatif.', '1733512147_task.png', 'Thian Wisnu Isnanto', '2024-09-19'),
 (10, 1, 'Workshop Literasi Digital untuk Generasi Muda', 'Kegiatan literasi digital diadakan untuk memberikan pengetahuan kepada generasi muda tentang pentingnya etika berinternet.', 'jumbotron-bg.jpg', 'Nadia Putri', '2024-07-20');
 
 -- --------------------------------------------------------
@@ -2268,12 +2258,11 @@ CREATE TABLE `layanan` (
 --
 
 INSERT INTO `layanan` (`id`, `id_departemen`, `nama_layanan`, `deskripsi`, `gambar`) VALUES
-(1, 2, 'Layanan Peminjaman Buku ', '<p style=\"text-align: justify;\" class=\"\">&nbsp; &nbsp; &nbsp; &nbsp;Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.</p><p style=\"text-align: justify;\" class=\"\">&nbsp; &nbsp; &nbsp; &nbsp;Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.</p>', 'perpus.jpg'),
-(2, 2, 'Layanan Referensi', '<p>Menyediakan referensi buku untuk keperluan akademik.</p>', 'perpus2.jpg'),
-(3, 2, 'Layanan Kearsipan', '<p>Menyediakan akses terhadap arsip fisik dan digital.</p>', 'workingspace.png'),
-(4, 3, 'coba layanan', '<p>ini adalah tulisan saja</p>', 'workingspace.png'),
-(5, 1, 'coba 2', '<p>coba 2</p>', 'workingspace.png'),
-(6, 6, 'coba 3', '<p>ini hanya coba saja</p>', 'workingspace.png');
+(1, 1, 'Layanan Peminjaman Buku ', '<p style=\"text-align: justify;\" class=\"\">       Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.</p><p style=\"text-align: justify;\" class=\"\">       Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.Melayani peminjaman dan pengembalian buku.</p>', '1733504896_67532f8094765.jpeg'),
+(2, 2, 'Layanan Referensi', '<p>Menyediakan referensi buku untuk keperluan akademik.</p>', '1733504957_67532fbd5146a.jpeg'),
+(3, 2, 'Layanan Kearsipan', '<p>Menyediakan akses terhadap arsip fisik dan digital.</p>', '1733505012_67532ff4e220d.jpg'),
+(4, 1, 'coba layanan', '<p>ini adalah tulisan saja</p>', '1733505045_6753301556366.jpg'),
+(7, 1, 'coba 3', '<p>coba 3</p>', '1733505465_675331b913832.jpeg');
 
 -- --------------------------------------------------------
 
@@ -2378,10 +2367,10 @@ CREATE TABLE `tbl_aboutus` (
 --
 
 INSERT INTO `tbl_aboutus` (`id_aboutus`, `title_aboutus`, `detail_aboutus`, `pict_aboutus`) VALUES
-(1, 'Profil ', '<h2 style=\"text-align: justify;\"><b>Profil Dinas Kearsipan Dan Perpustakaan Kota Kupang</b></h2><p style=\"text-align: justify;\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fugit reiciendis, iste cupiditate quibusdam illo tempora excepturi itaque natus, magnam explicabo cumque suscipit repudiandae ipsa ab? Voluptate cum odit doloremque.Jakarta kota maju, lestari dan berbudaya yang warganya terlibat dalam mewujudkan keberadaban, keadilan dan kesejahteraan bagi semua.</p><p style=\"text-align: justify; \">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fugit reiciendis, iste cupiditate quibusdam illo tempora excepturi itaque natus, magnam explicabo cumque suscipit repudiandae ipsa ab? Voluptate cum odit doloremque.Jakarta kota maju, lestari dan berbudaya yang warganya terlibat dalam mewujudkan keberadaban, keadilan dan kesejahteraan bagi semua.</p>', 'perpus.jpg'),
-(23, 'visi dan misi', '<h2 style=\"text-align: justify; \"><b>Visi & Misi</b></h2><p style=\"text-align: justify;\"><b>visi</b></p><ol><li style=\"text-align: justify; \">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li></ol><p style=\"text-align: justify;\"><b>Misi</b></p><ol><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li></ol>', 'about-1.jpg'),
-(24, 'Struktur organisasi', '<h2 style=\"text-align: justify; \"><b>Struktur organisasi</b></h2><p style=\"text-align: justify; \">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</p><p></p>', 'about-1.jpg'),
-(25, 'Sejarah', '<h2><b>Sejarah Dinas Kearsipan Dan Perpustakaan Kota Kupang</b></h2><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.<br></p>', 'workingspace.png');
+(1, 'Profil', '<h2 style=\"text-align: justify;\"><b>Profil Dinas Kearsipan Dan Perpustakaan Kota Kupang</b></h2><p style=\"text-align: justify;\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fugit reiciendis, iste cupiditate quibusdam illo tempora excepturi itaque natus, magnam explicabo cumque suscipit repudiandae ipsa ab? Voluptate cum odit doloremque.Jakarta kota maju, lestari dan berbudaya yang warganya terlibat dalam mewujudkan keberadaban, keadilan dan kesejahteraan bagi semua.</p><p style=\"text-align: justify; \">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic fugit reiciendis, iste cupiditate quibusdam illo tempora excepturi itaque natus, magnam explicabo cumque suscipit repudiandae ipsa ab? Voluptate cum odit doloremque.Jakarta kota maju, lestari dan berbudaya yang warganya terlibat dalam mewujudkan keberadaban, keadilan dan kesejahteraan bagi semua.</p>', '67533ade36906.jpg'),
+(23, 'visi dan misi', '<h2 style=\"text-align: justify; \"><b>Visi & Misi</b></h2><p style=\"text-align: justify;\"><b>visi</b></p><ol><li style=\"text-align: justify; \">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li></ol><p style=\"text-align: justify;\"><b>Misi</b></p><ol><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li><li style=\"text-align: justify;\">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</li></ol>', '675527b92763f.jpeg'),
+(24, 'Struktur organisasi', '<h2 style=\"text-align: justify; \"><b>Struktur organisasi</b></h2><p style=\"text-align: justify; \">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, ipsam suscipit est magnam non fuga, eum totam neque quam dolore obcaecati accusamus esse mollitia, nisi sunt? Officia, assumenda soluta rem doloribus molestias quis at sequi libero, deleniti voluptas qui ullam ipsa! Repellendus eligendi dolores nostrum, explicabo aliquam distinctio. Maxime, voluptatibus?</p><p></p>', '675527d61baee.jpg'),
+(25, 'Sejarah', '<h2><b>Sejarah Dinas Kearsipan Dan Perpustakaan Kota Kupang</b></h2><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.<br></p>', '675527f9147b4.jpeg');
 
 -- --------------------------------------------------------
 
@@ -2407,8 +2396,7 @@ INSERT INTO `tbl_inbox` (`id_inbox`, `date_receive_inbox`, `name_inbox`, `email_
 (14, '2018-07-17 06:26:09', 'Hafsah', 'Hafsah@yahoo.com', 'Haloooo...', 'Hai, Ini adalah testing pesan melalui front end website ! Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !Hai, Ini adalah testing pesan melalui front end website !'),
 (15, '2018-07-17 23:22:37', 'Hafizah', 'hafizah@yahoo.com', 'Penawaran Kerjasama', 'Dear Indahnya Berbagi,\r\n\r\nBerdasarkan dengan proposal yang sudah kami terima, dengan ini kami menyatakan setuju atas penawaran kerjasama dengan perusahaan anda.\r\n\r\nTerima Kasih\r\nHafizah'),
 (16, '2018-07-23 06:16:18', 'lurah', 'lurah@yahoo.com', 'haloo', 'saya tertarik dengan proposal anda !!'),
-(17, '2019-01-06 08:07:12', 'Firandina', 'firandina@yahoo.com', 'Congratulation', 'Dear Indahnya Berbagi,\r\n\r\nSelamat atas launching website resminya,\r\nsemoga bermanfaat dan sukses selalu\r\n\r\nterima kasih\r\nFirandina'),
-(18, '2024-12-05 23:47:46', 'Yoseph Kurubingan Bekayo', 'admin@gmail.com', 'Pertanyaan', 'sya saja');
+(17, '2019-01-06 08:07:12', 'Firandina', 'firandina@yahoo.com', 'Congratulation', 'Dear Indahnya Berbagi,\r\n\r\nSelamat atas launching website resminya,\r\nsemoga bermanfaat dan sukses selalu\r\n\r\nterima kasih\r\nFirandina');
 
 -- --------------------------------------------------------
 
@@ -2425,6 +2413,7 @@ CREATE TABLE `tbl_profile` (
   `description` text NOT NULL,
   `keywords` text NOT NULL,
   `gambar` varchar(100) NOT NULL,
+  `logo` varchar(100) NOT NULL,
   `alamat` varchar(255) DEFAULT NULL,
   `gmap` text DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -2439,8 +2428,8 @@ CREATE TABLE `tbl_profile` (
 -- Dumping data for table `tbl_profile`
 --
 
-INSERT INTO `tbl_profile` (`id_profile`, `titlewebsite`, `titleparagraf`, `welcomeparagraf`, `copyright`, `description`, `keywords`, `gambar`, `alamat`, `gmap`, `email`, `telepon`, `facebook`, `instagram`, `x`, `youtube`) VALUES
-(1, 'Arspus Kupang', 'Dinas <span>Kearsipan</span> dan <span>Perpustakaan</span> Kota Kupang', 'Selamat datang di website resmi', '© 2024 Dinas Kearsipan dan Perpustakaan Kota Kupang', 'Website resmi Dinas Kearsipan dan Perpustakaan Kota Kupang yang menyediakan informasi dan layanan terkait arsip dan perpustakaan.', 'Araspus, Dinas Kearsipan, Perpustakaan, Kota Kupang, layanan arsip, perpustakaan daerah', 'gedung.jpg', 'Jl. Contoh Alamat No.123, Kota Kupang', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17633.07544808062!2d123.6012467272646!3d-10.15453270581283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c569de836b48afd%3A0x14faa4d8e96d8525!2sDinas%20Kearsipan%20Dan%20Perpustakaan%20Kota%20Kupang!5e0!3m2!1sid!2sid!4v1733043704810!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'info@dinaskearsipdanperpustaakaankotakupang.go.id', '0380-1234567', 'https://www.facebook.com/dinaskearsipdanperpustaakaankotakupang', 'https://www.instagram.com/dinaskearsipdanperpustaakaankotakupang', 'https://www.x.com/dinaskearsipdanperpustaakaankotakupang', 'https://www.youtube.com/dinaskearsipdanperpustaakaankotakupang');
+INSERT INTO `tbl_profile` (`id_profile`, `titlewebsite`, `titleparagraf`, `welcomeparagraf`, `copyright`, `description`, `keywords`, `gambar`, `logo`, `alamat`, `gmap`, `email`, `telepon`, `facebook`, `instagram`, `x`, `youtube`) VALUES
+(1, 'Arspus Kupang', 'Dinas Kearsipan dan Perpustakaan Kota Kupang', 'Selamat datang di website resmi', 'Dinas Kearsipan dan Perpustakaan Kota Kupang', 'Website resmi Dinas Kearsipan dan Perpustakaan Kota Kupang yang menyediakan informasi dan layanan terkait arsip dan perpustakaan.', 'Araspus, Dinas Kearsipan, Perpustakaan, Kota Kupang, layanan arsip, perpustakaan daerah', 'gedungdinas.jpg', 'LOGO_KOTA_KUPANG.svg', 'Jl. Contoh Alamat No.123, Kota Kupang', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17633.07544808062!2d123.6012467272646!3d-10.15453270581283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c569de836b48afd%3A0x14faa4d8e96d8525!2sDinas%20Kearsipan%20Dan%20Perpustakaan%20Kota%20Kupang!5e0!3m2!1sid!2sid!4v1733043704810!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>', 'info@dinaskearsipdanperpustaakaankotakupang.go.id', '0380-1234567', 'https://www.facebook.com/dinaskearsipdanperpustaakaankotakupang', 'https://www.instagram.com/perpustakaan_kotakupang', 'https://www.x.com/dinaskearsipdanperpustaakaankotakupang', 'https://www.youtube.com/dinaskearsipdanperpustaakaankotakupang');
 
 -- --------------------------------------------------------
 
@@ -2674,19 +2663,19 @@ ALTER TABLE `tb_sirkulasi`
 -- AUTO_INCREMENT for table `bidang`
 --
 ALTER TABLE `bidang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `departemen`
 --
 ALTER TABLE `departemen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `informasi_pelayanan`
 --
 ALTER TABLE `informasi_pelayanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `jadwal_pegawai`
@@ -2698,13 +2687,13 @@ ALTER TABLE `jadwal_pegawai`
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `log_pinjam`
@@ -2728,13 +2717,13 @@ ALTER TABLE `pengunjung_buku`
 -- AUTO_INCREMENT for table `tbl_aboutus`
 --
 ALTER TABLE `tbl_aboutus`
-  MODIFY `id_aboutus` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_aboutus` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_inbox`
 --
 ALTER TABLE `tbl_inbox`
-  MODIFY `id_inbox` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_inbox` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_profile`

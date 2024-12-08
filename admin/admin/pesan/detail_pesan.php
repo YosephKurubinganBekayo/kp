@@ -44,8 +44,8 @@ if (isset($_GET['kode'])) {
                     <p><?php echo nl2br(htmlspecialchars($data['message_inbox'])); ?></p>
                 </div>
                 <div class="card-footer text-end">
-                    <a href="?page=MyApp/data_pesan" class="btn btn-secondary">Kembali</a>
-                    <a href="hapus_pesan.php?kode=<?php echo $data['id_inbox']; ?>"
+                    <a href="?page=MyApp/data_pesan" class="btn btn-primary">Kembali</a>
+                    <a href="?page=MyApp/del_pesan&kode=<?php echo $data['id_inbox']; ?>"
                         class="btn btn-danger"
                         onclick="return confirm('Yakin ingin menghapus pesan ini?');">Hapus</a>
                 </div>

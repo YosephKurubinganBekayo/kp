@@ -38,8 +38,8 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
             .bg-breadcrumb {
                 position: relative;
                 overflow: hidden;
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                    url(img/<?php echo $profile['gambar'] ?>);
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                    url(img/profil/<?php echo $profile['gambar'] ?>);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -76,7 +76,7 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </div>
 
             <div class="text-end mb-4">
-                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#filterModal">Filter Data</button>
+                <button class="btn btn-secondary rounded-start rounded-bottom" data-bs-toggle="modal" data-bs-target="#filterModal">Filter Data</button>
             </div>
             <div class="row g-4 wow fadeInUp" data-wow-delay="0.2s">
                 <?php if (!empty($blogs)) {
@@ -91,29 +91,31 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         // Potong deskripsi jika total panjang melebihi batas
                         if ($total_length > $max_length) {
                             $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
+                            // $deskripsi = substr($deskripsi, 0, $max_length - strlen($judul)) . '...';
                         }
                 ?>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card h-100">
-                                <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($blog['judul']); ?>" style="height: 250px; object-fit: cover; object-position: center;" />
+                            <div class="blog-item p-2">
+                                <div class="blog-img ">
+                                    <img src="img/<?php echo htmlspecialchars($blog['gambar']); ?>" class="img-fluid rounded-top w-100" alt="<?php echo htmlspecialchars($service['nama_layanan']); ?>" style="height: 230px; object-fit: cover; object-position: center; width: 100%;" />
 
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <?= htmlspecialchars($judul); ?>
-                                    </h5>
-                                    <p class="card-text">
-                                        <?php echo htmlspecialchars($deskripsi); ?>
-                                    </p>
                                 </div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img src="img/testimonial-1.jpg" class="rounded-circle me-2" style="width: 40px; height: 40px;" alt="" />
-                                        <div>
-                                            <h6 class="mb-0"><?php echo htmlspecialchars($blog['penulis']); ?></h6>
-                                            <small class="text-muted"><?php echo htmlspecialchars($blog['tanggal']); ?></small>
-                                        </div>
+                                <div class="d-flex align-items-center border-bottom py-2 mb-3">
+                                    <img src="img/aset/noimage.png" class="img-fluid rounded-circle" style="width: 50px; height: 50px" alt="" />
+                                    <div class="ms-2">
+                                        <p class="mb-0"><?php echo htmlspecialchars($blog['penulis']); ?></p>
+                                        <p class="mb-0"><?php echo htmlspecialchars($blog['tanggal']); ?></p>
                                     </div>
-                                    <a href="articel_blog_detail.php?id=<?php echo $blog['id'] ?>" class="btn btn-secondary btn-sm">Selengkapnya</a>
+                                </div>
+                                <div class="mb-4" style="height: 150px; overflow: hidden;">
+                                    <a href="#" class="h4 d-inline-block mb-3">
+                                        <?php echo ($judul); ?>
+                                    </a>
+                                    <?php echo $deskripsi ?>
+                                </div>
+
+                                <div class="text-end mt-2 border-top pt-2">
+                                    <a href="articel_blog_detail.php?id=<?php echo $blog['id']; ?>" class="btn btn-secondary rounded-start rounded-bottom">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -131,21 +133,7 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <!-- Footer End -->
 
     <!-- Copyright Start -->
-    <div class="container-fluid copyright py-4">
-        <div class="container">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
-                </div>
-                <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com">ThemeWagon</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!-- Copyright End -->
 
 
@@ -212,8 +200,8 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning">Terapkan Filter</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-warning rounded">Terapkan Filter</button>
+                        <button type="button" class="btn btn-secondary rounded" data-bs-dismiss="modal">Batal</button>
                     </div>
                 </form>
             </div>
