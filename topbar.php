@@ -24,7 +24,8 @@
             <a href="index.php" class="dropdown-item"><i class="fas fa-home me-2"></i>Beranda</a>
             <a href="index.php#about" class="dropdown-item"><i class="fas fa-info-circle me-2"></i>Tentang Kami</a>
             <a href="index.php#service" class="dropdown-item"><i class="fas fa-concierge-bell me-2"></i>Layanan</a>
-            <a href="index.php#service_info" class="dropdown-item"><i class="fas fa-concierge-bell me-2"></i>Informasi Pelayanan</a>
+            <a href="index.php#service_info" class="dropdown-item"><i class="fas fa-info me-2"></i>Informasi Pelayanan</a>
+            <a href="index.php#blog_articel" class="dropdown-item"><i class="fas fa-blog me-2"></i>Blog & Artikel</a>
             <a href="index.php#contact" class="dropdown-item"><i class="fas fa-phone-alt me-2"></i>Kontak</a>
           </div>
         </div>

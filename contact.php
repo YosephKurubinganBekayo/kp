@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
                 <h4 class="text-warning">Kontak</h4>
-                <h1 class="display-5 mb-4">HUBUNGI KAMI</h1>
+                <h1 class="display-5 mb-4">Hubungi Kami</h1>
                 <p class="mb-0">
                     Jika anda membutuhkan informasi atau bantuan lebih lebih lanjut, jangan ragu untuk menghubungi kami.
                     Kami siap membantu dengan sepenuh hati.
@@ -135,14 +135,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="bg-light p-5 rounded h-100 wow fadeInRight" data-wow-delay="0.2s">
                         <h4 class="text-warning">Kirim pesan ke kami</h4>
                         <p class="mb-4">Butuh Bantuan..? Silahkan Hubungi kami untuk informasi lebih lanjut</p>
-                        <?php if (isset($error)) : ?>
-                            <div class="alert alert-danger"><?php echo $error; ?></div>
-                        <?php endif; ?>
-
-                        <?php if (isset($success)) : ?>
-                            <div class="alert alert-success"><?php echo $success; ?></div>
-                        <?php endif; ?>
-
                         <form method="POST">
                             <div class="form-floating mb-3">
                                 <input type="text" name="name" class="form-control" placeholder="Nama " required>
@@ -183,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Footer End -->
 
     <!-- Copyright Start -->
-    
+
     <!-- Copyright End -->
 
 

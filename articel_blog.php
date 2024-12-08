@@ -66,12 +66,9 @@ $blogs = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px">
                 <h4 class="text-warning">Blog & Berita</h4>
-                <h1 class="display-5 mb-4">Articles For Pro Traders</h1>
+                <h1 class="display-5 mb-4">Tunggu Apa Lagi? Simal artikel dibawah ini...</h1>
                 <p class="mb-0">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur
-                    adipisci facilis cupiditate recusandae aperiam temporibus corporis
-                    itaque quis facere, numquam, ad culpa deserunt sint dolorem autem
-                    obcaecati, ipsam mollitia hic.
+                "Di sini, kita mengungkapkan sejarah yang tersembunyi, menggali kebudayaan lokal, dan membagikan pengetahuan baru. Temukan kisah inspiratif, fakta menarik, dan informasi terkini tentang pengelolaan arsip dan perpustakaan digital. Jelajahi artikel-artikel kami dan temukan keajaiban pengetahuan yang menunggu Anda!"
                 </p>
             </div>
 
