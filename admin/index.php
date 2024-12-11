@@ -199,21 +199,34 @@ include "inc/koneksi.php";
 						<li class="treeview">
 							<a href="#">
 								<i class="fa fa-folder"></i>
-								<span>Perpustakaan</span>
+								<span>Kelola Data</span>
 								<span class="pull-right-container">
 									<i class="fa fa-angle-left pull-right"></i>
 								</span>
 							</a>
 							<ul class="treeview-menu">
 								<li>
+									<a href="?page=MyApp/data_agt">
+										<i class="fa fa-users"></i>Data Anggota</a>
+								</li>
+								<li>
 									<a href="?page=MyApp/data_buku">
 										<i class="fa fa-book"></i>Data inventaris Buku</a>
 								</li>
 								<li>
-									<a href="?page=MyApp/data_agt">
-										<i class="fa fa-users"></i>Data Anggota</a>
+									<a href="?page=MyApp/data_kunjungan">
+										<i class="fa "></i>Riwayat Kunjungan</a>
 								</li>
-								<li class="treeview">
+								<li>
+									<a href="?page=MyApp/data_pengunjung">
+										<i class="fa fa-users"></i>Data Pengunjung</a>
+								</li>
+								<li>
+									<a href="?page=MyApp/data_pegawai">
+										<i class="fa fa-"></i>Data Pegawai</a>
+								</li>
+
+								<!-- <li class="treeview">
 									<a href="#">
 										<i class="fa fa-book"></i>
 										<span>Pengunjung</span>
@@ -222,7 +235,6 @@ include "inc/koneksi.php";
 										</span>
 									</a>
 									<ul class="treeview-menu">
-
 										<li>
 											<a href="?page=MyApp/data_kunjungan">
 												<i class="fa fa-arrow-circle-o-down"></i>Riwayat Kunjungan</a>
@@ -232,17 +244,16 @@ include "inc/koneksi.php";
 												<i class="fa fa-arrow-circle-o-up"></i>Pengembalian</a>
 										</li>
 									</ul>
-								</li>
-								<li class="treeview">
+								</li> -->
+								<!-- <li class="treeview">
 									<a href="#">
 										<i class="fa fa-book"></i>
-										<span>Transaksi</span>
+										<span>Riwayat Transaksi</span>
 										<span class="pull-right-container">
 											<i class="fa fa-angle-left pull-right"></i>
 										</span>
 									</a>
 									<ul class="treeview-menu">
-
 										<li>
 											<a href="?page=log_pinjam">
 												<i class="fa fa-arrow-circle-o-down"></i>Peminjaman</a>
@@ -252,8 +263,8 @@ include "inc/koneksi.php";
 												<i class="fa fa-arrow-circle-o-up"></i>Pengembalian</a>
 										</li>
 									</ul>
-								</li>
-								<li class="treeview">
+								</li> -->
+								<!-- <li class="treeview">
 									<a href="#">
 										<i class="fa fa-print"></i>
 										<span>Laporan</span>
@@ -271,7 +282,8 @@ include "inc/koneksi.php";
 												<i class="fa fa-file"></i>Laporan Inventaris Buku</a>
 										</li>
 									</ul>
-								</li>
+								</li> -->
+
 							</ul>
 						</li>
 						<li class="treeview">
@@ -283,6 +295,44 @@ include "inc/koneksi.php";
 							</a>
 						</li>
 						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-book"></i>
+								<span>Riwayat Transaksi</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="?page=log_pinjam">
+										<i class="fa fa-arrow-circle-o-down"></i>Peminjaman</a>
+								</li>
+								<li>
+									<a href="?page=log_kembali">
+										<i class="fa fa-arrow-circle-o-up"></i>Pengembalian</a>
+								</li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-print"></i>
+								<span>Laporan</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-left pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li>
+									<a href="?page=laporan_sirkulasi">
+										<i class="fa fa-file"></i>Laporan Sirkulasi</a>
+								</li>
+								<li>
+									<a href="?page=laporan_inventaris_buku">
+										<i class="fa fa-file"></i>Laporan Inventaris Buku</a>
+								</li>
+							</ul>
+						</li>
+						<!-- <li class="treeview">
 							<a href="#">
 								<i class="fa fa-book"></i>
 								<span>Kepegawaian</span>
@@ -306,7 +356,7 @@ include "inc/koneksi.php";
 										<i class="fa fa-"></i>Data Pegawai</a>
 								</li>
 							</ul>
-						</li>
+						</li> -->
 						<!-- <li class="treeview">
 							<a href="#">
 								<i class="fa fa-print"></i>
@@ -335,7 +385,7 @@ include "inc/koneksi.php";
 								</span>
 							</a>
 						</li>
-						<li class="treeview">
+						<!-- <li class="treeview">
 							<a href="#">
 								<i class="fa fa-home"></i>
 								<span>Profil Website</span>
@@ -376,7 +426,7 @@ include "inc/koneksi.php";
 										<i class="fa fa-activity"></i>Kegiatan</a>
 								</li>
 							</ul>
-						</li>
+						</li> -->
 						<!-- belum tambahkan navigasinya-->
 
 
@@ -540,7 +590,7 @@ include "inc/koneksi.php";
 							include "admin/pengunjung/del_kunjungan.php";
 							break;
 							//agt
-						case 'MyApp/data_K':
+						case 'MyApp/data_agt':
 							include "admin/agt/data_agt.php";
 							break;
 						case 'MyApp/add_agt':
@@ -619,6 +669,9 @@ include "inc/koneksi.php";
 							//sirkul
 						case 'data_sirkul':
 							include "admin/sirkul/data_sirkul.php";
+							break;
+						case 'MyApp/data_sirkul_detail':
+							include "admin/sirkul/data_sirkul_detail.php";
 							break;
 						case 'add_sirkul':
 							include "admin/sirkul/add_sirkul.php";
